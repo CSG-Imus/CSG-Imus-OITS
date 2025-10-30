@@ -2,14 +2,10 @@
 	--bg: #ffffff;
 	--muted: #f4f6f8;
 	--text: #0b1220;
+	/* single accent color — change this value to update site accent globally */
 	--accent: #0b73ff;
 	--card: #ffffff;
 }
-
-/* term palettes */
-.term-blue{ --accent: #1e90ff; --bg: #f4f9ff; }
-.term-green{ --accent: #28a745; --bg: #f6fff6; }
-.term-gold{ --accent: #d4a017; --bg: #fff9f0; }
 
 *{box-sizing:border-box}
 html,body{height:100%}

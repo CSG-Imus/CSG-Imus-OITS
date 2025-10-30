@@ -59,12 +59,7 @@
     renderOfficers(el('current-officers'), data.officers.current);
     renderOfficers(el('last-officers'), data.officers.last);
 
-    // palette switching
-    const palette = el('palette');
-    palette.addEventListener('change', (e)=>{
-      document.documentElement.classList.remove('term-blue','term-green','term-gold');
-      if(e.target.value !== 'default') document.documentElement.classList.add(e.target.value);
-    });
+
 
     // simple hash routing
     function showRoute(route){

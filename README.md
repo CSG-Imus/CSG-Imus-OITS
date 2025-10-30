@@ -6,9 +6,9 @@ How to edit content
 - Open `Static/main.js` and edit the `data` object at the top to add/change entries. Each document item should have `id`, `title`, `date`, and `file` (URL or path to document).
 - Edit officer lists under `data.officers.current` and `data.officers.last`.
 
-Changing term palette
-- In the site UI use the "Term palette" selector on the Home page. It toggles CSS classes (`term-blue`, `term-green`, `term-gold`) which set accent and background colors.
-- You can add new palettes by editing `Static/main.css` and adding a corresponding class which sets CSS variables.
+Changing the accent color
+- This site uses a single accent color controlled by the `--accent` CSS variable in `Static/main.css`.
+- To change the site color, open `Static/main.css` and modify the value of `--accent` near the top of the file.
 
 Deploying
 - Copy the `Static` folder to any static web server (Apache, nginx, GitHub Pages) or open `Static/main.html` in a browser for local testing.

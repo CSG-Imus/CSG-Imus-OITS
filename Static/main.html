@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CSG - Imus Campus — Transparency</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="wrap">
+                <h1 class="brand">Online Information Transparency System</h1>
+            </div>
+        </header>
+
+        <aside class="sidebar" aria-label="Primary navigation">
+            <nav class="main-nav" aria-label="Main navigation">
+                <div class="sidebar-top">
+                    <!-- Inline SVG logo — replace with file if you prefer -->
+                    <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect width="48" height="48" rx="8" fill="var(--accent)" />
+                        <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">CSG</text>
+                    </svg>
+                    <div class="brand">CSG Imus <small>Central Student Government</small></div>
+                </div>
+
+                <a href="#home" data-route="home" class="active">Home</a>
+                <a href="#documents" data-route="documents">Documents</a>
+                <a href="#officers" data-route="officers">Officers</a>
+                <a href="#about" data-route="about">About</a>
+            </nav>
+        </aside>
+
+        <main class="wrap" id="app">
+            <section id="home" class="page">
+                <div class="hero">
+                    <div>
+                        <h2>Transparency Hub</h2>
+                        <p class="lead">Official approved resolutions, proposals, project plans, and minutes of meeting for the Central Student Government — Imus Campus.</p>
+                        <div class="controls">
+                            <label for="palette">Term palette</label>
+                            <select id="palette" aria-label="Term palette">
+                                <option value="default">Default</option>
+                                <option value="term-blue">Term — Blue</option>
+                                <option value="term-green">Term — Green</option>
+                                <option value="term-gold">Term — Gold</option>
+                            </select>
+                        </div>
+                    </div>
+                    <img src="" alt="" class="hero-illustration" aria-hidden="true" />
+                </div>
+
+                <section class="quick-links">
+                    <a href="#documents" class="card">View Documents</a>
+                    <a href="#officers" class="card">Officers</a>
+                    <a href="#about" class="card">About CSG</a>
+                </section>
+            </section>
+
+            <section id="documents" class="page" hidden>
+                <h2>Documents</h2>
+                <div class="docs-grid">
+                    <div class="doc-col">
+                        <h3>Approved Resolutions</h3>
+                        <div id="resolutions" class="doc-list"></div>
+                    </div>
+                    <div class="doc-col">
+                        <h3>Activity Proposals</h3>
+                        <div id="activity-proposals" class="doc-list"></div>
+                    </div>
+                    <div class="doc-col">
+                        <h3>Project Proposals</h3>
+                        <div id="project-proposals" class="doc-list"></div>
+                    </div>
+                    <div class="doc-col">
+                        <h3>Minutes of Meeting</h3>
+                        <div id="minutes" class="doc-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="officers" class="page" hidden>
+                <h2>Officers</h2>
+                <div class="officer-section">
+                    <h3>Current Term</h3>
+                    <div id="current-officers" class="officer-list"></div>
+                </div>
+                <div class="officer-section">
+                    <h3>Last Term</h3>
+                    <div id="last-officers" class="officer-list"></div>
+                </div>
+            </section>
+
+            <section id="about" class="page" hidden>
+                <h2>About</h2>
+                <p>This site is a minimal, static transparency portal for the Central Student Government — Imus Campus. It is intentionally simple so content can be updated easily by editing the data arrays in <code>Static/main.js</code> or by replacing files.</p>
+                <p>For hosting, place this folder on any static web server (Apache, nginx, GitHub Pages, etc.).</p>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrap">
+                <small>Central Student Government — Imus Campus • Transparency Hub</small>
+            </div>
+        </footer>
+
+        <script src="main.js"></script>
+    </body>
+</html>

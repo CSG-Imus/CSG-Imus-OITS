@@ -355,3 +355,32 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .file-modal.show{display:block}
 .file-modal.show .file-modal__backdrop{opacity:1}
 .file-modal.show .file-modal__box{transform:none}
+
+/* Committees grid and dropdowns */
+.committees-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+.committee{background:var(--card);border:1px solid rgba(11,18,32,.04);padding:12px;border-radius:8px;min-width:0}
+.committee-header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.committee-header h4{margin:0;font-size:1rem}
+.committee-toggle{background:transparent;border:0;color:var(--accent);cursor:pointer;font-weight:700;padding:6px 8px;border-radius:6px}
+.committee-members{margin-top:8px;display:none;padding-left:12px}
+.committee-members li{list-style:none;padding:6px 2px;border-bottom:none;color:var(--text);font-weight:500}
+.committee.show .committee-members{display:block}
+
+/* Chevron icon styling for committee toggle */
+.committee-toggle svg{width:18px;height:18px;display:inline-block;vertical-align:middle;transition:transform 200ms ease;transform-origin:center}
+.committee .committee-toggle{color:var(--accent)}
+.committee.show .committee-toggle svg{transform:rotate(90deg)}
+
+@media (max-width:1200px){
+	.committees-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:800px){
+	.committees-grid{grid-template-columns:1fr}
+}
+
+/* Simple committees list used on Officers page */
+.committee-names{list-style:none;padding-left:0;margin-top:8px}
+.committee-names li{padding:8px 0;border-bottom:1px dashed rgba(11,18,32,.04);font-weight:600}
+
+

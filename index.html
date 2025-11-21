@@ -4,6 +4,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>CSG - Imus Campus — Transparency</title>
+        <link rel="icon" href="CSG.png" type="image/png" />
+        <link rel="apple-touch-icon" href="CSG.png" />
         <link rel="stylesheet" href="Static/main.css" />
     </head>
     <body>
@@ -11,7 +13,7 @@
         <header class="site-header">
             <div class="wrap">
                 <button id="nav-toggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-                <h1 class="brand">Online Information Transparency System</h1>
+                <h1 class="brand">Transparency Hub</h1>
             </div>
         </header>
 
@@ -32,7 +34,6 @@
         <main class="wrap" id="app">
             <section id="home" class="page">
                 <div class="hero">
-                            <h2>Transparency Hub</h2>
                     <div class="hero-slider">
                         <img id="hero-slide-img" src="" alt="Hero slide" />
                         <div class="hero-overlay">
@@ -100,9 +101,18 @@
                     <div id="board-members" class="officer-list"></div>
                 </div>
                 <div class="officer-section">
+                    <h3>Committees</h3>
+                    <div id="committees-list-officers" class="committees-grid"></div>
+                </div>
+                <div class="officer-section">
                     <h3>Last Term</h3>
                     <div id="last-officers" class="officer-list"></div>
                 </div>
+            </section>
+
+            <section id="committees" class="page" hidden>
+                <h2>Committees</h2>
+                <div class="committees-grid" id="committees-list-page"></div>
             </section>
 
             <section id="about" class="page" hidden>
@@ -150,8 +160,6 @@
             </div>
         </div>
 
-        <!-- pdf.js (local vendor) -->
-        <script src="Static/vendor/pdfjs/pdf.min.js"></script>
         <script src="Static/main.js"></script>
     </body>
 </html>

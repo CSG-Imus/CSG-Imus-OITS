@@ -7,8 +7,10 @@
         <link rel="stylesheet" href="Static/main.css" />
     </head>
     <body>
+        <div id="loading">Loading...</div>
         <header class="site-header">
             <div class="wrap">
+                <button id="nav-toggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
                 <h1 class="brand">Online Information Transparency System</h1>
             </div>
         </header>
@@ -16,12 +18,8 @@
         <aside class="sidebar" aria-label="Primary navigation">
             <nav class="main-nav" aria-label="Main navigation">
                 <div class="sidebar-top">
-                    <!-- Inline SVG logo — replace with file if you prefer -->
-                    <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <rect width="48" height="48" rx="8" fill="var(--accent)" />
-                        <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">CSG</text>
-                    </svg>
-                    <div class="brand">CSG Imus <small>Central Student Government</small></div>
+                    <img src="CSG.png" alt="CSG Logo" class="logo" width="48" height="48" />
+                    <div class="brand">Central Student<br>Government</div>
                 </div>
 
                 <a href="#home" data-route="home" class="active">Home</a>
@@ -47,10 +45,30 @@
                     <a href="#officers" class="card">Officers</a>
                     <a href="#about" class="card">About CSG</a>
                 </section>
+
+                <div class="home-grid">
+                    <div class="home-col">
+                        <h3>Mission</h3>
+                        <p>Promote transparency and accessibility of student government records, decisions, and activities to the student body through timely publication of resolutions, proposals, and meeting minutes.</p>
+                        <h3>Vision</h3>
+                        <p>To foster an empowered campus community where information is open, decisions are accountable, and students meaningfully participate in governance.</p>
+                    </div>
+                    <div class="home-col">
+                        <h3>Latest Updates</h3>
+                        <ul id="latest-updates" class="updates">
+                            <!-- populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
             </section>
 
             <section id="documents" class="page" hidden>
-                <h2>Documents</h2>
+                <div class="documents-header">
+                    <h2 class="documents-title">Documents</h2>
+                    <div class="documents-controls">
+                        <input id="documents-search" class="documents-search" type="search" placeholder="Search documents by id or title…" aria-label="Search documents" />
+                    </div>
+                </div>
                 <div class="docs-grid">
                     <div class="doc-col">
                         <h3>Approved Resolutions</h3>
@@ -74,8 +92,12 @@
             <section id="officers" class="page" hidden>
                 <h2>Officers</h2>
                 <div class="officer-section">
-                    <h3>Current Term</h3>
-                    <div id="current-officers" class="officer-list"></div>
+                    <h3>Executives</h3>
+                    <div id="executives" class="officer-list"></div>
+                </div>
+                <div class="officer-section">
+                    <h3>Board Members</h3>
+                    <div id="board-members" class="officer-list"></div>
                 </div>
                 <div class="officer-section">
                     <h3>Last Term</h3>
@@ -87,15 +109,42 @@
                 <h2>About</h2>
                 <p>This site is a minimal, static transparency portal for the Central Student Government — Imus Campus. It is intentionally simple so content can be updated easily by editing the data arrays in <code>Static/main.js</code> or by replacing files.</p>
                 <p>For hosting, place this folder on any static web server (Apache, nginx, GitHub Pages, etc.).</p>
+
+                <!-- Rotating photo card using images from Dashboard-Photos -->
+                <div class="about-photo-wrap">
+                    <div class="photo-card" id="about-photo-card" aria-hidden="false">
+                        <img id="about-photo-img" src="" alt="CSG photo" />
+                        <div class="photo-caption">Central Student Government — Imus Campus</div>
+                    </div>
+                </div>
             </section>
         </main>
 
         <footer class="site-footer">
             <div class="wrap">
-                <small>Central Student Government — Imus Campus • Transparency Hub</small>
+                <small>Committee on Web Development - Central Student Government - Imus Campus</small>
             </div>
         </footer>
+        <!-- File preview modal -->
+        <div id="fileModal" class="file-modal" style="display:none;">
+            <div class="file-modal__backdrop" id="fileModalBackdrop"></div>
+            <div class="file-modal__box" role="dialog" aria-modal="true" aria-labelledby="fileModalLabel">
+                <div class="file-modal__content">
+                    <div id="fileModalMeta" class="file-modal__meta" style="display:none"></div>
+                    <div id="fileModalLoader" class="file-modal__loader" aria-hidden="true">Loading preview…</div>
+                    <div id="fileModalError" class="file-modal__error" aria-hidden="true">
+                        <div>Preview unavailable.</div>
+                    </div>
+                    <iframe id="viewer" frameborder="0" aria-label="Document preview" style="display:none"></iframe>
+                    <canvas id="pdf-canvas" style="display:none"></canvas>
+                    <!-- floating close button (lower-right) -->
+                    <button class="file-modal__floating-close" id="fileModalClose" aria-label="Close preview">×</button>
+                </div>
+            </div>
+        </div>
 
+        <!-- pdf.js (local vendor) -->
+        <script src="Static/vendor/pdfjs/pdf.min.js"></script>
         <script src="Static/main.js"></script>
     </body>
 </html>

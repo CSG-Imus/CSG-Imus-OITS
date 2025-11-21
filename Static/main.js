@@ -27,25 +27,25 @@
     ],
     officers: {
       executives: [
-        {name: 'Zoe R. Gil', role: 'President', photo: 'officer-photos/pres.png', facebook: 'https://www.facebook.com/share/1BaEa8GUoE/'},
-        {name: 'Ken B. Lentejas', role: 'Vice President for Internal Affairs', photo: 'officer-photos/vpi.png', facebook: 'https://www.facebook.com/keyihen.el'},
-        {name: 'John Jefferson M. De Leon', role: 'Vice President for External Affairs', photo: 'officer-photos/vpe.png', facebook: 'https://www.facebook.com/jph.mtsdln'},
-        {name: 'Daniel D. Camacláng', role: 'Secretary General', photo: 'officer-photos/sec.png', facebook: 'https://www.facebook.com/share/1A7XDawVVp/'},
-        {name: 'Samantha Natalie Fattalo', role: 'Treasurer', photo: 'officer-photos/treasurer.png', facebook: 'https://www.facebook.com/share/1EzE9B7gPS/?mibextid=wwXIfr'},
-        {name: 'Cristina V. Domingo', role: 'Auditor', photo: 'officer-photos/auditor.png', facebook: 'https://www.facebook.com/tin.cvd'},
-        {name: 'Kenn Harvey F. Brocoy', role: 'Public Relations Officer', photo: 'officer-photos/pro.png', facebook: 'https://www.facebook.com/eli.chikenn'}
+        {name: 'Zoe R. Gil', role: 'President', photo: 'Officer-Photos/pres.png', facebook: 'https://www.facebook.com/share/1BaEa8GUoE/'},
+        {name: 'Ken B. Lentejas', role: 'Vice President for Internal Affairs', photo: 'Officer-Photos/vpi.png', facebook: 'https://www.facebook.com/keyihen.el'},
+        {name: 'John Jefferson M. De Leon', role: 'Vice President for External Affairs', photo: 'Officer-Photos/vpe.png', facebook: 'https://www.facebook.com/jph.mtsdln'},
+        {name: 'Daniel D. Camacláng', role: 'Secretary General', photo: 'Officer-Photos/sec.png', facebook: 'https://www.facebook.com/share/1A7XDawVVp/'},
+        {name: 'Samantha Natalie Fattalo', role: 'Treasurer', photo: 'Officer-Photos/treasurer.png', facebook: 'https://www.facebook.com/share/1EzE9B7gPS/?mibextid=wwXIfr'},
+        {name: 'Cristina V. Domingo', role: 'Auditor', photo: 'Officer-Photos/auditor.png', facebook: 'https://www.facebook.com/tin.cvd'},
+        {name: 'Kenn Harvey F. Brocoy', role: 'Public Relations Officer', photo: 'Officer-Photos/pro.png', facebook: 'https://www.facebook.com/eli.chikenn'}
       ],
       boardMembers: [
-        {name: 'jimmuel D. Palma', role: 'GAD Representative', photo: 'officer-photos/gad.png', facebook: 'https://www.facebook.com/jimmuelpalma'},
-        {name: 'Angela C. Regidor', role: 'SAP BA', photo: 'officer-photos/ba.png', facebook: 'https://www.facebook.com/share/1BPRgFhHEU/'},
-        {name: 'Charles Derrick A. Garcia', role: 'SAP CS', photo: 'officer-photos/cs.png', facebook: 'https://www.facebook.com/share/1BnreUAh5A/?mibextid=wwXIfr'},
-        {name: 'Juanita Anjela M. Rivas', role: 'SAP EDUC', photo: 'officer-photos/educ.png', facebook: 'https://www.facebook.com/share/16ySQteSWw/?mibextid=LQQJ4d'},
-        {name: 'Mikaella Kathe Palileo', role: 'SAP ENTREP', photo: 'officer-photos/entrep.png', facebook: 'https://www.facebook.com/share/1Cv4q431YZ/'},
-        {name: 'Misael A. Ponferrada', role: 'SAP HM', photo: 'officer-photos/hm.png', facebook: 'https://www.facebook.com/share/14Pcg263Z2i/'},
-        {name: 'Ivan P. Duran', role: 'SAP IT', photo: 'officer-photos/IT.png', facebook: 'https://www.facebook.com/infectious.ivan/'},
-        {name: 'Chris John Labalan', role: 'SAP JOURN', photo: 'officer-photos/journ.png', facebook: 'https://www.facebook.com/share/1N69TcWjQk/'},
-        {name: 'Lorie P. Salude', role: 'SAP OFAD', photo: 'officer-photos/OFAD.png', facebook: 'https://www.facebook.com/share/17XB2CYAQp/'},
-        {name: 'Mary Eunice D. Ramos', role: 'SAP PSYCH', photo: 'officer-photos/Psych.png', facebook: 'https://www.facebook.com/merie.ramos.9'}
+        {name: 'jimmuel D. Palma', role: 'GAD Representative', photo: 'Officer-Photos/gad.png', facebook: 'https://www.facebook.com/jimmuelpalma'},
+        {name: 'Angela C. Regidor', role: 'SAP BA', photo: 'Officer-Photos/ba.png', facebook: 'https://www.facebook.com/share/1BPRgFhHEU/'},
+        {name: 'Charles Derrick A. Garcia', role: 'SAP CS', photo: 'Officer-Photos/cs.png', facebook: 'https://www.facebook.com/share/1BnreUAh5A/?mibextid=wwXIfr'},
+        {name: 'Juanita Anjela M. Rivas', role: 'SAP EDUC', photo: 'Officer-Photos/educ.png', facebook: 'https://www.facebook.com/share/16ySQteSWw/?mibextid=LQQJ4d'},
+        {name: 'Mikaella Kathe Palileo', role: 'SAP ENTREP', photo: 'Officer-Photos/entrep.png', facebook: 'https://www.facebook.com/share/1Cv4q431YZ/'},
+        {name: 'Misael A. Ponferrada', role: 'SAP HM', photo: 'Officer-Photos/hm.png', facebook: 'https://www.facebook.com/share/14Pcg263Z2i/'},
+        {name: 'Ivan P. Duran', role: 'SAP IT', photo: 'Officer-Photos/IT.png', facebook: 'https://www.facebook.com/infectious.ivan/'},
+        {name: 'Chris John Labalan', role: 'SAP JOURN', photo: 'Officer-Photos/journ.png', facebook: 'https://www.facebook.com/share/1N69TcWjQk/'},
+        {name: 'Lorie P. Salude', role: 'SAP OFAD', photo: 'Officer-Photos/OFAD.png', facebook: 'https://www.facebook.com/share/17XB2CYAQp/'},
+        {name: 'Mary Eunice D. Ramos', role: 'SAP PSYCH', photo: 'Officer-Photos/Psych.png', facebook: 'https://www.facebook.com/merie.ramos.9'}
       ],
       last: [
         {name: 'Liza Perez', role: 'President', photo: 'CSG.png'},

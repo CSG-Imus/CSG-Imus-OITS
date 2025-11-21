@@ -115,7 +115,13 @@
     list.forEach(o=>{
       const d = document.createElement('div');
       d.className = 'officer';
-      d.innerHTML = `<img src="CSG.png" alt="Officer Photo" class="officer-img"><div class="name">${o.name}</div>${o.role ? `<div class="role">${o.role}</div>` : ''}`;
+      d.innerHTML = `
+        <img src="CSG.png" alt="Officer Photo" class="officer-img">
+        <div class="officer-info">
+          <div class="name">${o.name}</div>
+          ${o.role ? `<div class="role">${o.role}</div>` : ''}
+        </div>
+      `;
       container.appendChild(d);
     });
   }
@@ -175,9 +181,10 @@
 
     // render metadata if provided
     if(metaBox){
-      if(meta && (meta.title || meta.id || meta.type)){
+      if(meta && (meta.title)){
         metaBox.style.display = 'block';
-        metaBox.innerHTML = `<div class="meta-title">${meta.title || ''}</div><div class="meta-sub">${meta.type || ''} • ${meta.id || ''} ${meta.date? '• '+meta.date : ''}</div>`;
+        // Render only the title pill (no subtitle)
+        metaBox.innerHTML = `<div class="meta-title">${meta.title || ''}</div>`;
       } else {
         metaBox.style.display = 'none';
         metaBox.innerHTML = '';
@@ -429,6 +436,8 @@
     initAboutPhotoCard();
     // Initialize documents search
     setupDocumentSearch();
+    // Initialize home hero slider
+    initHomeSlider();
   });
 
   // Rotating photo card implementation
@@ -493,6 +502,44 @@
         observer.disconnect();
       }
     });
+    observer.observe(document.body, {childList:true, subtree:true});
+  }
+
+  // Hero slider: cycles images and displays lead + buttons overlay
+  function initHomeSlider(){
+    const img = document.getElementById('hero-slide-img');
+    if(!img) return;
+    let idx = 0;
+    function preload(src){
+      return new Promise((resolve,reject)=>{
+        const i = new Image();
+        i.onload = ()=>resolve(src);
+        i.onerror = ()=>reject(src);
+        i.src = src;
+      });
+    }
+
+    async function showNext(){
+      if(!img) return;
+      const nextIdx = (idx + 1) % dashboardPhotos.length;
+      const nextSrc = dashboardPhotos[nextIdx];
+      try{ await preload(nextSrc); }catch(e){}
+      img.classList.add('fading');
+      setTimeout(()=>{ img.src = nextSrc; img.classList.remove('fading'); }, 300);
+      idx = nextIdx;
+    }
+
+    // set initial image
+    (async function start(){
+      for(const s of dashboardPhotos){
+        try{ await preload(s); img.src = s; break; }catch(e){}
+      }
+      if(!img.src && dashboardPhotos.length) img.src = dashboardPhotos[0];
+    })();
+
+    const intervalId = setInterval(showNext, 4000);
+    // stop if element removed
+    const observer = new MutationObserver(()=>{ if(!document.getElementById('hero-slide-img')){ clearInterval(intervalId); observer.disconnect(); }});
     observer.observe(document.body, {childList:true, subtree:true});
   }
 })();

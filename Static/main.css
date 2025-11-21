@@ -11,7 +11,7 @@
 html,body{height:100%}
 body{
 	margin:0;
-	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	font-family: Arial, Helvetica, sans-serif;
 	color:var(--text);
 	background:var(--bg);
 	-webkit-font-smoothing:antialiased;
@@ -36,8 +36,8 @@ body{
 .main-nav a.active{background:var(--accent);color:#fff}
 
 
-.hero{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:28px 0}
-.hero h2{margin:0 0 8px;font-size:1.6rem}
+.hero{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:28px 0}
+.hero h2{margin:0;font-size:1.8rem}
 .lead{color:rgba(11,18,32,.75);max-width:52ch}
 .controls{margin-top:12px}
 select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)}
@@ -45,6 +45,42 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .card{display:inline-block;padding:14px 18px;border-radius:8px;background:var(--card);text-decoration:none;color:var(--text);border:2px solid rgba(11,18,32,.1);transition:transform 0.2s ease, box-shadow 0.2s ease}
 .card:hover{transform:scale(1.05);box-shadow:0 4px 8px rgba(0,0,0,0.1)}
 .card:active{transform:scale(0.95)}
+
+/* Hero slider styles */
+.hero-text{width:100%}
+.hero-slider{width:100%;position:relative;border-radius:12px;overflow:hidden;background:#eee;height:65vh;min-height:180px;max-height:85vh}
+.hero-slider img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:opacity 600ms ease;opacity:1}
+.hero-slider img.fading{opacity:0}
+.hero-slider::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.25);z-index:3;pointer-events:none}
+.hero-overlay{position:absolute;left:16px;bottom:16px;right:16px;color:#fff;z-index:5;display:flex;flex-direction:column;gap:12px}
+.hero-overlay .lead{color:#fff;max-width:100%;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.overlay-links{display:flex;gap:10px}
+.overlay-links .card{background:rgba(255,255,255,0.92);color:var(--text);border:0;padding:10px 12px}
+.overlay-links .card:hover{transform:none;box-shadow:0 6px 18px rgba(11,18,32,0.08)}
+
+/* Hero button animated float (gentle) */
+@keyframes hub-float {
+	0%{ transform: translateY(0); }
+	50%{ transform: translateY(-6px); }
+	100%{ transform: translateY(0); }
+}
+.overlay-links .card{
+	will-change:transform;
+	animation: hub-float 6s ease-in-out infinite;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.overlay-links .card:hover, .overlay-links .card:focus{
+	animation-play-state: paused;
+	transform: translateY(-8px) scale(1.03);
+	box-shadow:0 12px 30px rgba(11,18,32,0.16);
+}
+.overlay-links .card:focus{outline:3px solid rgba(11,115,255,0.12)}
+
+@media (max-width:800px){
+	.hero-slider{min-height:180px}
+	.hero-overlay{left:12px;right:12px;bottom:12px}
+	.hero-text{width:100%}
+}
 
 .docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
 .doc-list{display:flex;flex-direction:column;gap:10px}
@@ -90,33 +126,77 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 }
 .file-modal__meta .meta-sub{color:rgba(11,18,32,.65);font-size:0.9rem;display:block;margin-top:4px;white-space:normal}
 .file-modal__meta{
-  position:absolute;
-  left:14px;
-  bottom:14px;
-  color:#fff;
-  z-index:7;
-  padding:10px 14px;
-  background:#000;
-  border-radius:8px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.45);
-  display:inline-block;
-  max-width:calc(100% - 140px); /* leave space for floating close button */
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
+	position:absolute;
+	left:14px;
+	bottom:14px;
+	color:#fff;
+	z-index:7;
+	/* visually absent: no background, no shadow, no padding; doesn't block clicks */
+	padding:0;
+	background:transparent;
+	border-radius:0;
+	box-shadow:none;
+	display:block;
+	max-width:none;
+	overflow:visible;
+	pointer-events:none;
 }
 .file-modal__meta .meta-title{
-  font-weight:700;
-  display:inline-block;
-  background:transparent;
-  color:inherit;
+	font-weight:700;
+	display:inline-block;
+	background:#000; /* title pill stays black */
+	color:#fff;
+	padding:8px 12px;
+	border-radius:8px;
+	white-space:nowrap;
+	pointer-events:auto; /* title pill remains interactive */
 }
-.file-modal__meta .meta-sub{color:rgba(255,255,255,0.85);font-size:0.9rem;display:block;margin-top:6px;white-space:normal}
+.file-modal__meta .meta-sub{display:none}
 .officer-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:12px}
-.officer{padding:12px;border-radius:8px;background:var(--card);border:1px solid rgba(11,18,32,.04);text-align:center;display:flex;flex-direction:column;align-items:center}
-.officer .officer-img{width:80px;height:80px;border-radius:50%;margin-bottom:8px;object-fit:cover}
-.officer .name{font-weight:600}
-.officer .role{color:rgba(11,18,32,.6);font-size:.95rem}
+.officer{
+	padding:12px;
+	border-radius:8px;
+	background:var(--card);
+	border:1px solid rgba(11,18,32,.04);
+	text-align:left;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	transition:transform 180ms ease, box-shadow 180ms ease;
+	transform-origin:center top;
+}
+.officer:hover{
+	transform:translateY(-6px) scale(1.03);
+	box-shadow:0 10px 30px rgba(11,18,32,0.12);
+}
+.officer .officer-img{
+	width:80px;
+	aspect-ratio:1/1; /* keep square aspect so border-radius makes a circle */
+	height:auto;
+	border-radius:50%;
+	margin-bottom:10px;
+	object-fit:cover;
+	flex:0 0 auto;
+	align-self:center;
+}
+.officer-info{
+	display:flex;
+	flex-direction:column; /* keep stacked: name above role */
+	align-items:center;
+	justify-content:center;
+	width:100%;
+	gap:6px;
+	padding:0 4px;
+	text-align:center;
+}
+.officer .name{font-weight:700;margin:0;padding:0}
+.officer .role{color:rgba(11,18,32,.6);font-size:.95rem;text-align:center}
+
+@media (max-width:600px){
+	.officer-info{align-items:center;gap:6px}
+	.officer .role{text-align:center}
+	.officer .officer-img{width:64px}
+}
 
 .site-footer{border-top:1px solid rgba(11,18,32,.04);padding:18px 0;margin-top:28px;text-align:center}
 .site-footer .wrap{display:flex;align-items:center;justify-content:space-between}
@@ -130,6 +210,11 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 	.sidebar{position:static;width:100%;height:auto;border-right:none;padding:12px 10px}
 	.main-nav{flex-direction:row;gap:8px;flex-wrap:wrap}
 	.nav-toggle{display:inline-flex}
+
+	/* keep the header content on a single row and place the toggle on the left */
+	.site-header .wrap{display:flex;align-items:center;gap:12px;justify-content:flex-start}
+	.site-header #nav-toggle{margin-left:0;margin-right:12px;order:0}
+	.site-header .brand{order:1}
 	/* hide nav by default on mobile; use max-height for smooth slide animation */
 	.sidebar .main-nav{max-height:0;overflow:hidden;flex-direction:column;gap:8px;margin-top:8px;transition:max-height 260ms ease}
 	.sidebar .main-nav.open{max-height:480px}
@@ -150,6 +235,44 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 	.sidebar .brand{font-size:1rem}
 	.sidebar .brand small{font-size:0.75rem}
 	.site-footer small{font-size:0.8rem}
+}
+
+/* Responsive adjustments for the file-modal on small screens */
+@media (max-width:600px){
+	.file-modal__meta{
+		left:12px !important;
+		right:auto !important;
+		bottom:12px !important;
+		max-width:none !important;
+		/* keep container visually absent on mobile */
+		padding:0 !important;
+		background:transparent !important;
+		border-radius:0 !important;
+		box-shadow:none !important;
+		pointer-events:none !important;
+	}
+
+	/* Make close button slightly smaller and keep inside view */
+	.file-modal__floating-close{
+		right:12px;
+		bottom:12px;
+		width:40px;
+		height:40px;
+		border-radius:20px;
+		font-size:20px;
+	}
+
+	/* Ensure modal box uses more vertical space on mobile */
+	.file-modal__box{
+		width:96%;
+		height:84vh;
+		margin:8vh auto;
+	}
+
+	/* let iframe/canvas reserve space behind meta box */
+	.file-modal__box iframe, .file-modal__content canvas{
+		height:100%;
+	}
 }
 
 /* Home extra layout */

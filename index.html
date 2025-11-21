@@ -11,7 +11,7 @@
         <header class="site-header">
             <div class="wrap">
                 <button id="nav-toggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-                <h1 class="brand">Online Information Transparency System</h1>
+                <h1 class="brand">Transparency Hub</h1>
             </div>
         </header>
 
@@ -32,19 +32,18 @@
         <main class="wrap" id="app">
             <section id="home" class="page">
                 <div class="hero">
-                    <div>
-                        <h2>Transparency Hub</h2>
-                        <p class="lead">Official approved resolutions, proposals, project plans, and minutes of meeting for the Central Student Government — Imus Campus.</p>
-                        <!-- simple site color — change --accent in main.css to update the accent color -->
+                    <div class="hero-slider">
+                        <img id="hero-slide-img" src="" alt="Hero slide" />
+                        <div class="hero-overlay">
+                            <p class="lead">Official approved resolutions, proposals, project plans, and minutes of meeting for the <br>Central Student Government — Imus Campus.</p>
+                            <div class="quick-links overlay-links">
+                                <a href="#documents" class="card">View Documents</a>
+                                <a href="#officers" class="card">Officers</a>
+                                <a href="#about" class="card">About CSG</a>
+                            </div>
+                        </div>
                     </div>
-                    <img src="" alt="" class="hero-illustration" aria-hidden="true" />
                 </div>
-
-                <section class="quick-links">
-                    <a href="#documents" class="card">View Documents</a>
-                    <a href="#officers" class="card">Officers</a>
-                    <a href="#about" class="card">About CSG</a>
-                </section>
 
                 <div class="home-grid">
                     <div class="home-col">
@@ -107,15 +106,22 @@
 
             <section id="about" class="page" hidden>
                 <h2>About</h2>
-                <p>This site is a minimal, static transparency portal for the Central Student Government — Imus Campus. It is intentionally simple so content can be updated easily by editing the data arrays in <code>Static/main.js</code> or by replacing files.</p>
-                <p>For hosting, place this folder on any static web server (Apache, nginx, GitHub Pages, etc.).</p>
+                <div class="about-text">
+                    <p>A <strong>new era</strong> arises, bringing with it a <strong>new set of student leaders</strong>. We're not just a new set of faces; we represent a <strong>new face of leadership</strong>—one built on <strong>genuine commitment</strong> and <strong>dedication</strong>. In a time when the passion to lead may have dimmed for some, we stand ready to <strong>reignite that fire</strong>. This new term is driven by a deep sense of purpose, ensuring that every initiative, decision, and program is rooted in the <strong>true needs and aspirations of every kabsuhenyo</strong>.</p>
 
-                <!-- Rotating photo card using images from Dashboard-Photos -->
-                <div class="about-photo-wrap">
-                    <div class="photo-card" id="about-photo-card" aria-hidden="false">
-                        <img id="about-photo-img" src="" alt="CSG photo" />
-                        <div class="photo-caption">Central Student Government — Imus Campus</div>
+                    <!-- Rotating photo card using images from Dashboard-Photos -->
+                    <div class="about-photo-wrap">
+                        <div class="photo-card" id="about-photo-card" aria-hidden="false">
+                            <img id="about-photo-img" src="" alt="CSG photo" />
+                            <div class="photo-caption">Central Student Government — Imus Campus</div>
+                        </div>
                     </div>
+
+                    <p>This is more than a change; it is a <strong>transformation in how we serve</strong>. We recognize that the heart of effective governance is not just in policies and plans, but in the sincerity with which they are executed. Our promise is simple yet powerful: to bring <strong>empathy, dedication, and true care</strong> to the forefront of our work. Our mission is to lead not just with our minds, but with our deepest convictions.</p>
+
+                    <p><strong>Para sa Kabsuhenyos, Puso ang magiging Sentro ng Serbisyo!</strong> 💙🤍</p>
+
+                    <p class="about-tags">#CSG2526 #CvSUImus<br>#PusoAngSentroNgSerbisyo</p>
                 </div>
             </section>
         </main>

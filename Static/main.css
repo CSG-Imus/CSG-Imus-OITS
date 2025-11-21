@@ -36,8 +36,8 @@ body{
 .main-nav a.active{background:var(--accent);color:#fff}
 
 
-.hero{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:28px 0}
-.hero h2{margin:0;font-size:1.8rem}
+.hero{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:12px 0}
+.hero h2{margin:0 0 6px;font-size:1.8rem}
 .lead{color:rgba(11,18,32,.75);max-width:52ch}
 .controls{margin-top:12px}
 select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)}
@@ -57,6 +57,10 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .overlay-links{display:flex;gap:10px}
 .overlay-links .card{background:rgba(255,255,255,0.92);color:var(--text);border:0;padding:10px 12px}
 .overlay-links .card:hover{transform:none;box-shadow:0 6px 18px rgba(11,18,32,0.08)}
+
+/* Hide quick-links inside hero overlay (buttons removed) */
+.hero-overlay .quick-links{display:none !important}
+.hero-overlay .card{animation:none !important}
 
 /* Hero button animated float (gentle) */
 @keyframes hub-float {
@@ -199,7 +203,7 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 }
 
 .site-footer{border-top:1px solid rgba(11,18,32,.04);padding:18px 0;margin-top:28px;text-align:center}
-.site-footer .wrap{display:flex;align-items:center;justify-content:space-between}
+.site-footer .wrap{display:flex;align-items:center;justify-content:center}
 .footer-logo{width:40px;height:40px;border-radius:6px}
 .footer-nav{display:flex;gap:16px}
 .footer-nav a{color:var(--text);text-decoration:none;font-size:0.9rem}

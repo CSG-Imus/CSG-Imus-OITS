@@ -1,29 +1,56 @@
 # CSG-Imus-OITS — Transparency Site (Static)
 
-This is a minimal static transparency portal for the Central Student Government — Imus Campus. It contains sections for approved resolutions, activity proposals, project proposals, minutes of meeting, and officer lists for the current and last term.
+Minimal static transparency portal for the Central Student Government — Imus Campus.
 
-How to edit content
-- Open `Static/main.js` and edit the `data` object at the top to add/change entries. Each document item should have `id`, `title`, `date`, and `file` (URL or path to document).
-- Edit officer lists under `data.officers.current` and `data.officers.last`.
+This repository is a small client-side static site (HTML, CSS, vanilla JS). Content is driven by arrays in `Static/main.js` so the site can be updated by editing those data structures and adding files to the project folders.
 
-Changing the accent color
-- This site uses a single accent color controlled by the `--accent` CSS variable in `Static/main.css`.
-- To change the site color, open `Static/main.css` and modify the value of `--accent` near the top of the file.
+## Structure
+- `index.html` — single-page markup and modal scaffolding.
+- `Static/main.css` — styles, responsive rules, and layout.
+- `Static/main.js` — data and client-side app logic: rendering lists, modal preview, hero slider, About carousel, and search.
+- `Static/vendor/pdfjs/` — (optional) place `pdf.min.js` and `pdf.worker.min.js` here if you want client-side PDF rendering without the browser viewer toolbar.
+- `Dashboard-Photos/` — images used by the About carousel and home hero slider.
+- `files/` — example documents (PDFs) referenced by data items.
 
-Deploying
-- Copy the `Static` folder to any static web server (Apache, nginx, GitHub Pages) or open `Static/main.html` in a browser for local testing.
+## Editing content
+- Documents and officers live in `Static/main.js` as the `data` object. Each document entry should include:
+	- `id` (string), `title` (string), `date` (YYYY-MM-DD) and `file` (path or URL).
+- Officers are in `data.officers` (executives, boardMembers, last). Edit or replace entries as needed.
+- Images for the About slider / Hero use `Dashboard-Photos/*.png`. Add or replace PNGs there.
 
-License
-- Free to use and modify for the CSG-Imus community.
-# Central Student Governement - Online Information Transparency System
+## Appearance and assets
+- The site uses a single font-family set in `Static/main.css` (Arial, with fallbacks).
+- Accent color: change `--accent` in `Static/main.css`.
 
-<b>Project Overview</b>
-The Central Student Government - Online Information Transparency System is a web-based platform designed to enhance transparency and communication between the student government and the student body. This system allows for the publication of meeting minutes, financial reports, event announcements, and other relevant information in an easily accessible manner.
+## Modal document previews and PDF.js
+- Documents open in a modal. By default the modal uses an `<iframe>` fallback which shows the browser's PDF UI.
+- If you want toolbar-free PDF rendering (the site renders the first page onto a `<canvas>`), vendor `pdf.min.js` and `pdf.worker.min.js` from Mozilla's PDF.js into `Static/vendor/pdfjs/`.
+	- Place `pdf.min.js` at `Static/vendor/pdfjs/pdf.min.js` and `pdf.worker.min.js` at `Static/vendor/pdfjs/pdf.worker.min.js`.
+	- Serving the site over HTTP (not `file://`) is recommended so the worker can be loaded without cross-origin issues.
 
-<b>Features</b>
-- User-friendly interface for easy navigation and information retrieval.
-- Secure login for student government to upload and manage content.
-- Public access to view published documents and announcements.
-- Search functionality to quickly find specific information.
-- Responsive design for accessibility on various devices.
-- Integration with social media platforms for broader reach.
+## Local testing
+Serve the project folder over a local HTTP server (PowerShell example):
+
+```powershell
+Set-Location 'd:\Documents\Static Website\CSG-Imus OITS'
+python -m http.server 8000; Start-Process 'http://localhost:8000'
+```
+
+Notes:
+- The PDF canvas renderer requires the vendor files and a working local server.
+- Search is client-side and filters document entries by `id` and `title`.
+
+## Customization and development
+- Hero slider images are taken from `Dashboard-Photos` and auto-cycle; update the `dashboardPhotos` array in `Static/main.js` to change the set or order.
+- About text is in `index.html` inside the About section; emphasis is marked with `<strong>` tags.
+- Styles are in `Static/main.css`; update variables at the top (`--accent`, `--bg`, etc.) to match branding.
+
+## Accessibility
+- Buttons and links are keyboard-focusable. Modals use `aria-modal` and a visible close control.
+
+## License & credits
+This project is provided for the CSG-Imus community. Use and modify freely for campus needs.
+
+If you want, I can also:
+- Add a small script to copy the fetched PDF.js files into `Static/vendor/pdfjs/` for you (I already fetched them earlier), or
+- Tweak fonts/heading sizes to better suit Arial across devices.

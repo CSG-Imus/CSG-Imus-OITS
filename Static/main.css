@@ -37,6 +37,10 @@ body{
 
 
 .hero{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:12px 0}
+/* Academic year headings (centered with top spacing) */
+.term-heading{ text-align:center; margin-top:18px; margin-bottom:8px; }
+/* extra top spacing for the previous (last) academic year heading */
+.last-term-heading{ margin-top:44px; }
 .hero h2{margin:0 0 6px;font-size:1.8rem}
 .lead{color:rgba(11,18,32,.75);max-width:52ch}
 .controls{margin-top:12px}
@@ -293,6 +297,39 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .photo-card img.fading{opacity:0}
 .photo-caption{position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,0.48);color:#fff;padding:8px 12px;border-radius:8px;font-weight:600}
 
+/* About galleries */
+.about-galleries{display:flex;flex-direction:column;gap:24px;margin-top:18px}
+.about-gallery h3{margin:0 0 8px 0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.gallery-item{background:var(--card);border-radius:8px;overflow:hidden;border:1px solid rgba(11,18,32,.04);text-align:center;padding:6px}
+.gallery-item img{width:100%;height:110px;object-fit:cover;border-radius:6px}
+.gallery-caption{margin-top:8px;font-weight:600;font-size:0.95rem;color:var(--text)}
+
+@media (min-width:900px){
+	.about-galleries{flex-direction:row;gap:20px}
+	.about-gallery{flex:1}
+}
+
+/* About sliders (auto-rotating similar to home hero) */
+.about-slider{position:relative;border-radius:8px;overflow:hidden;border:1px solid rgba(11,18,32,.04);background:var(--card);height:260px;display:flex;align-items:center;justify-content:center}
+.about-slider img.about-slider-img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity 400ms ease;opacity:1}
+.about-slider img.about-slider-img.fading{opacity:0}
+.about-slider .slider-caption{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,0.5);color:#fff;padding:6px 10px;border-radius:6px;font-weight:600}
+/* Dark overlay for about slider boxes to make content pop */
+.about-slider::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.28);pointer-events:none;z-index:0}
+.about-slider img.about-slider-img{position:relative;z-index:1}
+.about-slider .slider-caption{z-index:2}
+
+@media (max-width:600px){
+	.about-slider{height:200px}
+}
+
+/* Dark overlay for about slider boxes to make content pop */
+.about-slider{background:var(--card);}
+.about-slider::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.28);pointer-events:none;z-index:1}
+.about-slider img.about-slider-img{position:relative;z-index:0}
+.about-slider .slider-caption{z-index:2}
+
 @media (max-width:800px){
 	.photo-card img{height:220px}
 }
@@ -357,7 +394,7 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .file-modal.show .file-modal__box{transform:none}
 
 /* Committees grid and dropdowns */
-.committees-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+.committees-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;align-items:start}
 .committee{background:var(--card);border:1px solid rgba(11,18,32,.04);padding:12px;border-radius:8px;min-width:0}
 .committee-header{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .committee-header h4{margin:0;font-size:1rem}

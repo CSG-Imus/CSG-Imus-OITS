@@ -37,29 +37,80 @@
       ],
       boardMembers: [
         {name: 'jimmuel D. Palma', role: 'GAD Representative', photo: 'Officer-Photos/gad.png', facebook: 'https://www.facebook.com/jimmuelpalma'},
-        {name: 'Angela C. Regidor', role: 'SAP BA', photo: 'Officer-Photos/ba.png', facebook: 'https://www.facebook.com/share/1BPRgFhHEU/'},
-        {name: 'Charles Derrick A. Garcia', role: 'SAP CS', photo: 'Officer-Photos/cs.png', facebook: 'https://www.facebook.com/share/1BnreUAh5A/?mibextid=wwXIfr'},
-        {name: 'Juanita Anjela M. Rivas', role: 'SAP EDUC', photo: 'Officer-Photos/educ.png', facebook: 'https://www.facebook.com/share/16ySQteSWw/?mibextid=LQQJ4d'},
-        {name: 'Mikaella Kathe Palileo', role: 'SAP ENTREP', photo: 'Officer-Photos/entrep.png', facebook: 'https://www.facebook.com/share/1Cv4q431YZ/'},
-        {name: 'Misael A. Ponferrada', role: 'SAP HM', photo: 'Officer-Photos/hm.png', facebook: 'https://www.facebook.com/share/14Pcg263Z2i/'},
-        {name: 'Ivan P. Duran', role: 'SAP IT', photo: 'Officer-Photos/IT.png', facebook: 'https://www.facebook.com/infectious.ivan/'},
-        {name: 'Chris John Labalan', role: 'SAP JOURN', photo: 'Officer-Photos/journ.png', facebook: 'https://www.facebook.com/share/1N69TcWjQk/'},
-        {name: 'Lorie P. Salude', role: 'SAP OFAD', photo: 'Officer-Photos/OFAD.png', facebook: 'https://www.facebook.com/share/17XB2CYAQp/'},
-        {name: 'Mary Eunice D. Ramos', role: 'SAP PSYCH', photo: 'Officer-Photos/Psych.png', facebook: 'https://www.facebook.com/merie.ramos.9'}
+        {name: 'Angela C. Regidor', role: 'SAP Business Administration', photo: 'Officer-Photos/ba.png', facebook: 'https://www.facebook.com/share/1BPRgFhHEU/'},
+        {name: 'Charles Derrick A. Garcia', role: 'SAP Computer Science', photo: 'Officer-Photos/cs.png', facebook: 'https://www.facebook.com/share/1BnreUAh5A/?mibextid=wwXIfr'},
+        {name: 'Juanita Anjela M. Rivas', role: 'SAP Education', photo: 'Officer-Photos/educ.png', facebook: 'https://www.facebook.com/share/16ySQteSWw/?mibextid=LQQJ4d'},
+        {name: 'Mikaella Kathe Palileo', role: 'SAP Entrepreneurship', photo: 'Officer-Photos/entrep.png', facebook: 'https://www.facebook.com/share/1Cv4q431YZ/'},
+        {name: 'Misael A. Ponferrada', role: 'SAP Hospitality Management', photo: 'Officer-Photos/hm.png', facebook: 'https://www.facebook.com/share/14Pcg263Z2i/'},
+        {name: 'Ivan P. Duran', role: 'SAP Information Technology', photo: 'Officer-Photos/SAP.gif', facebook: 'https://www.facebook.com/infectious.ivan/'},
+        {name: 'Chris John Labalan', role: 'SAP Journalism', photo: 'Officer-Photos/journ.png', facebook: 'https://www.facebook.com/share/1N69TcWjQk/'},
+        {name: 'Lorie P. Salude', role: 'SAP Office Administration', photo: 'Officer-Photos/OFAD.png', facebook: 'https://www.facebook.com/share/17XB2CYAQp/'},
+        {name: 'Mary Eunice D. Ramos', role: 'SAP Psychology', photo: 'Officer-Photos/Psych.png', facebook: 'https://www.facebook.com/merie.ramos.9'}
       ],
-      last: [
-        {name: 'Liza Perez', role: 'President', photo: 'CSG.png'},
-        {name: 'Ramon Reyes', role: 'Vice President', photo: 'CSG.png'}
-      ]
+      last: {
+        executives: [
+          {name: 'Rica Babes B. Delos Reyes', role: 'President', photo: 'CSG.png'},
+          {name: 'Neal Brian M. Martija', role: 'Vice President for Internal Affairs', photo: 'CSG.png'},
+          {name: 'Vench Kyla C. Ababon', role: 'Vice President for External Affairs', photo: 'CSG.png'},
+          {name: 'Ednalyn Kaye B. Hamili', role: 'Secretary', photo: 'CSG.png'},
+          {name: 'Justine Grace C. Aleman', role: 'Treasurer', photo: 'CSG.png'},
+          {name: 'Jasmine O. Ramos', role: 'Auditor', photo: 'CSG.png'},
+          {name: 'Marvin E. Apawan', role: 'P.R.O', photo: 'CSG.png'}
+        ],
+        boardMembers: [
+          {name: 'Allen Malabanan', role: 'SAP Journalism', photo: 'CSG.png'},
+          {name: 'Chloe O. Regalado', role: 'SAP BSOA', photo: 'CSG.png'},
+          {name: 'Johnny S. De Asis Jr.', role: 'SAP Computer Science', photo: 'CSG.png'},
+          {name: 'Sarah Bernalte', role: 'SAP Information Technology', photo: 'CSG.png'},
+          {name: 'Hannah Coleen M. Marteriz', role: 'SAP Education', photo: 'CSG.png'},
+          {name: 'Ma. Nicole E. Valenzuela', role: 'SAP Business Administration', photo: 'CSG.png'},
+          {name: 'Hans Christian O. Ancierto', role: 'SAP Psychology', photo: 'CSG.png'},
+          {name: 'Mary Carmelemn H. Catoltol', role: 'SAP Hospitality Management', photo: 'CSG.png'},
+          {name: 'Jhomari Kenshin P. Sarte', role: 'SAP Entrepreneurship', photo: 'CSG.png'}
+        ]
+      }
     },
     committees: [
-      {name: 'Rules and Internal Affairs Committee', members: []},
-      {name: 'Committee on External Affairs', members: []},
-      {name: 'Committee on Culture, Arts and Athletics', members: []},
-      {name: 'Social and Environmental Awareness Committee', members: []},
+      {name: 'Rules and Internal Affairs Committee', members: [
+        'Rica Babes B. Delos Reyes',
+        'Craven Mish Lorraine L. Norbe',
+        'Chieko M. Lantajo',
+        'Ivan Reniel H. Amangca',
+        'Loubert L. Apin',
+        'Carmella P. Cayetano',
+        'Marvilyn G. Frias',
+        'Kimverly S. Mina'
+      ]},
+      {name: 'Committee on External Affairs', members: [
+        'John Jefferson M. De Leon',
+        "Dean Levi's G. Aquino",
+        'Allexzeus Marvel C. Padilla',
+        'Juria Mae N. Dela Cerna',
+        'Ryren Hagos',
+        'Juvert V. Vista'
+      ]},
+      {name: 'Committee on Culture, Arts and Athletics', members: [
+        'Vice Chairperson • Hans Christian O. Ancierto',
+        'Secretary • Anjon-Lores E. Cañares',
+        'Performing Arts Representative • Jay Ar V. Rondina',
+        'Performing Arts Representative • Georgie May G. Tunay',
+        'Athletics Representative • Keith Owen B. Silva'
+      ]},
+      {name: 'Social and Environmental Awareness Committee', members: [
+        'Jennifer Nazareno',
+        'Ralfh Dharren Molina'
+      ]},
       {name: 'Committee on Creatives', members: []},
       {name: 'Committee on Student Affairs and Concern', members: []},
-      {name: 'Secretariat Committee', members: []},
+      {name: 'Secretariat Committee', members: [
+        'Ishra Firreli B. Fernando',
+        'Ma. Cristina Hernandez',
+        'Minea Sabina M. Feliciano',
+        'Jose Angelo Bitanga',
+        'Gwen Marinie Paciente',
+        'Ariane Nicole D. Comedia',
+        'Zachariah Sydney U. Babon'
+      ]},
       {name: 'Committee on Web Development', members: [
         'Ralph Kenneth B. Perez',
         'Jerald D. Estrella',
@@ -222,28 +273,11 @@
       // chevron right SVG (rotates when open)
       btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.addEventListener('click', (e)=>{
-        // Prevent clicks from bubbling to other handlers which might cause
-        // unexpected UI changes in older browsers or duplicate listeners.
         try{ e && e.preventDefault && e.preventDefault(); }catch(err){}
         try{ e && e.stopPropagation && e.stopPropagation(); }catch(err){}
-
-        // Toggle only this committee card. When opening, ensure other open cards close.
+        // Toggle only this committee card; do NOT auto-close other cards.
         const is = card.classList.toggle('show');
         btn.setAttribute('aria-expanded', is ? 'true' : 'false');
-        // If container is available, scope the search to it to avoid touching
-        // unrelated committees elsewhere in the document (duplicate ids/pages).
-        const scope = container && container.querySelectorAll ? container : document;
-        if(is){
-          try{
-            const others = Array.from(scope.querySelectorAll('.committee.show'));
-            others.forEach(o=>{
-              if(o === card) return;
-              o.classList.remove('show');
-              const tb = o.querySelector('.committee-toggle');
-              if(tb) tb.setAttribute('aria-expanded','false');
-            });
-          }catch(e){/* ignore */}
-        }
       });
 
       header.appendChild(h);
@@ -356,8 +390,9 @@
     renderCommittees(el('committees-list-officers'), data.committees);
     // also render on the standalone Committees page (if present)
     renderCommittees(el('committees-list-page'), data.committees);
-    renderOfficers(el('last-officers'), data.officers.last);
-    renderLatestUpdates(el('latest-updates'), data, 5);
+    // Render last term executives and board members separately
+    renderOfficers(el('last-executives'), data.officers.last && data.officers.last.executives);
+    renderOfficers(el('last-board-members'), data.officers.last && data.officers.last.boardMembers);
 
     const navToggle = el('nav-toggle');
     const mainNav = document.querySelector('.sidebar .main-nav');
@@ -378,6 +413,19 @@
 
     const ld = document.getElementById('loading'); if(ld) ld.style.display = 'none';
     initAboutPhotoCard(); setupDocumentSearch(); initHomeSlider();
+    // Populate About page galleries (current officers + events) using simple sliders
+    try{
+      const aboutOfficersEl = el('about-current-officers');
+      const aboutEventsEl = el('about-events-gallery');
+      // Use the term tagline image (pics/tagline.png) for the Term Tagline slider.
+      // Fallback to officer photos if the tagline image is missing.
+      const taglinePath = 'pics/tagline.png';
+      const currentOfficers = [].concat(data.officers.executives || []).concat(data.officers.boardMembers || []);
+      const officerPhotos = currentOfficers.map(o=> o && o.photo ? o.photo : 'CSG.png');
+      // Use the tagline image only for the Term Tagline slider (do not cycle officer photos)
+      initAboutSlider(aboutOfficersEl, [taglinePath], { interval: 3800, caption: 'Term Tagline' });
+      initAboutSlider(aboutEventsEl, dashboardPhotos, { interval: 3000, caption: 'Events & Activities' });
+    }catch(e){/* ignore if about page not present */}
   });
 
   const dashboardPhotos = [ 'Dashboard-Photos/IMG_1195.png', 'Dashboard-Photos/IMG_1462.png', 'Dashboard-Photos/IMG_1498.png' ];
@@ -399,5 +447,70 @@
     const intervalId = setInterval(showNext, 4000);
     const observer = new MutationObserver(()=>{ if(!document.getElementById('hero-slide-img')){ clearInterval(intervalId); observer.disconnect(); }});
     observer.observe(document.body, {childList:true, subtree:true});
+  }
+
+  // Render small image galleries on the About page
+  function renderAboutOfficersGallery(container, officers){
+    // kept for potential non-slider fallback; currently not used
+    if(!container) return;
+    container.innerHTML = '';
+    const list = [].concat(officers || []);
+    list.forEach(o=>{
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      const img = document.createElement('img');
+      img.src = o.photo || 'CSG.png';
+      img.alt = o.name || '';
+      const cap = document.createElement('div');
+      cap.className = 'gallery-caption';
+      cap.textContent = o.name || '';
+      item.appendChild(img);
+      item.appendChild(cap);
+      container.appendChild(item);
+    });
+  }
+
+  function renderEventsGallery(container, photos){
+    // kept for potential non-slider fallback; currently not used
+    if(!container) return;
+    container.innerHTML = '';
+    (photos || []).forEach(src=>{
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'CSG event photo';
+      item.appendChild(img);
+      container.appendChild(item);
+    });
+  }
+
+  // Generic simple auto-rotating slider for About galleries
+  function initAboutSlider(container, images, opts = {}){
+    if(!container) return;
+    const imgs = (images && images.length) ? images.slice() : ['CSG.png'];
+    // ensure absolute paths or fallbacks
+    const slides = imgs.map(s => s || 'CSG.png');
+    container.innerHTML = '';
+    container.classList.add('about-slider');
+    const imgEl = document.createElement('img');
+    imgEl.className = 'about-slider-img';
+    imgEl.src = slides[0];
+    imgEl.alt = opts.alt || 'slide';
+    container.appendChild(imgEl);
+    if(opts.caption){
+      const cap = document.createElement('div'); cap.className = 'slider-caption'; cap.textContent = opts.caption; container.appendChild(cap);
+    }
+    let idx = 0; let fading = false; const interval = opts.interval || 3500;
+    function preload(src){ return new Promise((resolve)=>{ const i=new Image(); i.onload=()=>resolve(src); i.onerror=()=>resolve(src); i.src=src; }); }
+    async function next(){
+      const nextIdx = (idx + 1) % slides.length; const nextSrc = slides[nextIdx];
+      try{ await preload(nextSrc); }catch(e){}
+      imgEl.classList.add('fading');
+      setTimeout(()=>{ imgEl.src = nextSrc; imgEl.classList.remove('fading'); idx = nextIdx; }, 300);
+    }
+    const id = setInterval(next, interval);
+    // store timer reference so it can be cleared if element removed
+    container._sliderInterval = id;
   }
 })();

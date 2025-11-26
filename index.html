@@ -47,20 +47,7 @@
                     </div>
                 </div>
 
-                <div class="home-grid">
-                    <div class="home-col">
-                        <h3>Mission</h3>
-                        <p>Promote transparency and accessibility of student government records, decisions, and activities to the student body through timely publication of resolutions, proposals, and meeting minutes.</p>
-                        <h3>Vision</h3>
-                        <p>To foster an empowered campus community where information is open, decisions are accountable, and students meaningfully participate in governance.</p>
-                    </div>
-                    <div class="home-col">
-                        <h3>Latest Updates</h3>
-                        <ul id="latest-updates" class="updates">
-                            <!-- populated dynamically -->
-                        </ul>
-                    </div>
-                </div>
+                <!-- Home grid removed: Latest Updates section removed per request -->
             </section>
 
             <section id="documents" class="page" hidden>
@@ -91,7 +78,7 @@
             </section>
 
             <section id="officers" class="page" hidden>
-                <h2>Officers</h2>
+                <h2 class="term-heading">Academic Year 2025 - 2026 Officers</h2>
                 <div class="officer-section">
                     <h3>Executives</h3>
                     <div id="executives" class="officer-list"></div>
@@ -105,8 +92,11 @@
                     <div id="committees-list-officers" class="committees-grid"></div>
                 </div>
                 <div class="officer-section">
-                    <h3>Last Term</h3>
-                    <div id="last-officers" class="officer-list"></div>
+                    <h3 class="term-heading last-term-heading">Academic Year 2024 - 2025</h3>
+                    <h4>Executives</h4>
+                    <div id="last-executives" class="officer-list"></div>
+                    <h4>Board Members</h4>
+                    <div id="last-board-members" class="officer-list"></div>
                 </div>
             </section>
 
@@ -118,21 +108,19 @@
             <section id="about" class="page" hidden>
                 <h2>About</h2>
                 <div class="about-text">
-                    <p>A <strong>new era</strong> arises, bringing with it a <strong>new set of student leaders</strong>. We're not just a new set of faces; we represent a <strong>new face of leadership</strong>—one built on <strong>genuine commitment</strong> and <strong>dedication</strong>. In a time when the passion to lead may have dimmed for some, we stand ready to <strong>reignite that fire</strong>. This new term is driven by a deep sense of purpose, ensuring that every initiative, decision, and program is rooted in the <strong>true needs and aspirations of every kabsuhenyo</strong>.</p>
+                    <p>The Central Student Government (CSG) — Imus Campus represents the student voice and leads campus initiatives that promote student welfare, campus life, and transparent governance. The CSG plans and executes projects, maintains records of resolutions and minutes, and collaborates with campus stakeholders to ensure student interests are represented. Our work focuses on accountability, inclusivity, and service to the student body.</p>
 
-                    <!-- Rotating photo card using images from Dashboard-Photos -->
-                    <div class="about-photo-wrap">
-                        <div class="photo-card" id="about-photo-card" aria-hidden="false">
-                            <img id="about-photo-img" src="" alt="CSG photo" />
-                            <div class="photo-caption">Central Student Government — Imus Campus</div>
+                    <div class="about-galleries">
+                        <div class="about-gallery">
+                            <h3>Term Tagline</h3>
+                            <div id="about-current-officers" class="gallery"></div>
+                        </div>
+
+                        <div class="about-gallery">
+                            <h3>Events & Activities</h3>
+                            <div id="about-events-gallery" class="gallery"></div>
                         </div>
                     </div>
-
-                    <p>This is more than a change; it is a <strong>transformation in how we serve</strong>. We recognize that the heart of effective governance is not just in policies and plans, but in the sincerity with which they are executed. Our promise is simple yet powerful: to bring <strong>empathy, dedication, and true care</strong> to the forefront of our work. Our mission is to lead not just with our minds, but with our deepest convictions.</p>
-
-                    <p><strong>Para sa Kabsuhenyos, Puso ang magiging Sentro ng Serbisyo!</strong> 💙🤍</p>
-
-                    <p class="about-tags">#CSG2526 #CvSUImus<br>#PusoAngSentroNgSerbisyo</p>
                 </div>
             </section>
         </main>

@@ -1,5 +1,12 @@
 // Minimal JS to populate documents and officers and handle simple routing + palette switching
 (function(){
+  const PDFJS_WORKER = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const PDF_ZOOM_DEFAULT = 0.9;
+  const PDF_ZOOM_STEP = 0.1;
+  const PDF_ZOOM_MIN = 0.6;
+  const PDF_ZOOM_MAX = 1.5;
+  let _pdfZoom = PDF_ZOOM_DEFAULT;
+  let _pdfSource = null;
   const data = {
     resolutions: [
       {id: 'RESO 1', title: 'TEMPORARY ASSUMPTION OF FINANCIAL RESPONSIBILITIES', date: '', file: 'files/Resolution/RESO 1 - TEMPORARY ASSUMPTION OF FINANCIAL RESPONSIBILITIES.pdf'},
@@ -13,9 +20,10 @@
       {id: 'RESO 9', title: 'SELECTING NEW CSG ADVISER', date: '', file: 'files/Resolution/RESO 9 - SELECTING NEW CSG ADVISER.pdf'},
       {id: 'RESO 10', title: 'OPENING OF COA TO ALL EXECUTIVES WITH GUIDELINES', date: '', file: 'files/Resolution/RESO 10 - OPENING OF COA TO ALL EXECUTIVES WITH GUIDELINES.pdf'}
     ],
-    activityProposals: [
-      {id: 'OFFICE MEMO 1', title: '3RD GENERAL MEETING (OFFICE MEMO)', date: '', file: 'files/Office Memorandum/OFFICE MEMO 1 - 3RD GENERAL MEETING.pdf'}
-    ],
+    accomplishmentReports: [],
+    financialStatements: [],
+    officeMemorandums: [],
+    activityProposals: [],
     projectProposals: [
       {id: 'PP - Panamitang-Bayani', title: 'Panamitang-Bayani', date: '', file: 'files/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
       {id: 'PP - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', date: '', file: 'files/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
@@ -82,7 +90,6 @@
         'Kimverly S. Mina'
       ]},
       {name: 'Committee on External Affairs', members: [
-        'John Jefferson M. De Leon',
         "Dean Levi's G. Aquino",
         'Allexzeus Marvel C. Padilla',
         'Juria Mae N. Dela Cerna',
@@ -122,12 +129,52 @@
     ]
   };
 
+  const documentDataMap = {
+    'resolutions': data.resolutions,
+    'activity-proposals': data.activityProposals,
+    'project-proposals': data.projectProposals,
+    'minutes': data.minutes,
+    'office-memorandums': data.officeMemorandums,
+    'accomplishment-reports': data.accomplishmentReports,
+    'financial-statements': data.financialStatements
+  };
+
+  const documentContainers = {};
+
   function el(id){return document.getElementById(id)}
 
-  function renderList(container, items, type = 'Document'){
+  const MAX_DOCS_PER_CATEGORY = 3;
+
+  function parseDocNumber(id){
+    const matches = (id || '').match(/\d+/g);
+    if(!matches || !matches.length) return Number.MIN_SAFE_INTEGER;
+    const val = parseInt(matches[matches.length - 1], 10);
+    return Number.isNaN(val) ? Number.MIN_SAFE_INTEGER : val;
+  }
+
+  function sortDocuments(items){
+    return (items || []).slice().sort((a, b)=>{
+      const aNum = parseDocNumber(a && a.id);
+      const bNum = parseDocNumber(b && b.id);
+      if(aNum !== bNum) return bNum - aNum;
+      return (b.date || '').localeCompare(a.date || '');
+    });
+  }
+
+  function renderList(container, items, type = 'Document', limit = MAX_DOCS_PER_CATEGORY){
     if(!container) return;
     container.innerHTML = '';
-    items.forEach(it=>{
+    const sorted = sortDocuments(items);
+    const sliceCount = (typeof limit === 'number' && limit > 0) ? limit : sorted.length;
+    const limited = sorted.slice(0, sliceCount);
+    if(!limited.length){
+      const empty = document.createElement('div');
+      empty.className = 'doc doc--placeholder';
+      empty.textContent = 'No recent file.';
+      container.appendChild(empty);
+      return;
+    }
+    limited.forEach(it=>{
       const d = document.createElement('div');
       d.className = 'doc';
       d.setAttribute('data-title', (it.title || '').toLowerCase());
@@ -147,9 +194,38 @@
       }
       d.appendChild(a);
       const small = document.createElement('small');
-      small.textContent = `${it.id || ''} • ${it.date || ''}`;
-      d.appendChild(small);
+      const details = [];
+      if(it.id) details.push(it.id);
+      if(it.date) details.push(it.date);
+      if(details.length){
+        small.textContent = details.join(' ');
+        d.appendChild(small);
+      }
       container.appendChild(d);
+    });
+  }
+
+  function initializeDocumentSections(){
+    Object.keys(documentDataMap).forEach(type => {
+      const container = document.getElementById(type);
+      if(container) documentContainers[type] = container;
+    });
+    renderDocumentsByMode('recent');
+  }
+
+  function renderDocumentsByMode(mode){
+    if(mode && mode !== 'recent'){
+      const target = documentContainers[mode];
+      if(target){
+        const items = documentDataMap[mode] || [];
+        renderList(target, items, mode, Infinity);
+      }
+      return;
+    }
+    Object.keys(documentContainers).forEach(type => {
+      const container = documentContainers[type];
+      const items = documentDataMap[type] || [];
+      renderList(container, items, type, MAX_DOCS_PER_CATEGORY);
     });
   }
 
@@ -179,6 +255,41 @@
       noEl.textContent = anyVisible ? '' : 'No documents match your search.';
       noEl.style.display = anyVisible ? 'none' : 'block';
     });
+  }
+
+  function setupDocumentFilter(){
+    const select = document.getElementById('documents-filter');
+    const columns = document.querySelectorAll('#documents .doc-col');
+    const grid = document.querySelector('#documents .docs-grid');
+    if(!select || !columns.length || !grid) return;
+    function applyFilter(){
+      const value = select.value || 'recent';
+      columns.forEach(col=>{
+        const type = col.getAttribute('data-doc-type');
+        const show = value === 'recent' || type === value;
+        col.style.display = show ? '' : 'none';
+      });
+      renderDocumentsByMode(value);
+      grid.classList.toggle('documents-grid--single', value !== 'recent');
+      updateRecentEmptyState(value, grid);
+    }
+    select.addEventListener('change', applyFilter);
+    applyFilter();
+  }
+
+  function updateRecentEmptyState(currentFilter, grid){
+    if(!grid) return;
+    let emptyEl = document.getElementById('documents-recent-empty');
+    if(!emptyEl){
+      emptyEl = document.createElement('div');
+      emptyEl.id = 'documents-recent-empty';
+      emptyEl.className = 'documents-empty-state';
+      emptyEl.textContent = 'No recent file.';
+      grid.after(emptyEl);
+    }
+    const hasDocs = grid.querySelectorAll('.doc').length > 0;
+    const show = currentFilter === 'recent' && !hasDocs;
+    emptyEl.style.display = show ? 'block' : 'none';
   }
 
   function renderOfficers(container, list){
@@ -331,59 +442,176 @@
     });
   }
 
+  function setPdfControlsVisible(show){
+    const controls = document.getElementById('pdfControls');
+    if(!controls) return;
+    controls.hidden = !show;
+  }
+
+  function updatePdfZoomLabel(){
+    const label = document.getElementById('pdfZoomValue');
+    if(label) label.textContent = Math.round(_pdfZoom * 100) + '%';
+  }
+
+  function changePdfZoom(direction){
+    const delta = direction === 'in' ? PDF_ZOOM_STEP : -PDF_ZOOM_STEP;
+    const next = Math.max(PDF_ZOOM_MIN, Math.min(PDF_ZOOM_MAX, parseFloat((_pdfZoom + delta).toFixed(2))));
+    if(Math.abs(next - _pdfZoom) < 0.001 || !_pdfSource) return;
+    _pdfZoom = next;
+    updatePdfZoomLabel();
+    const container = document.getElementById('pdf-container');
+    const loader = document.getElementById('fileModalLoader');
+    const error = document.getElementById('fileModalError');
+    renderPdfDocument(_pdfSource, container, loader, error, _pdfZoom);
+  }
+
+  function initPdfZoomControls(){
+    const controls = document.getElementById('pdfControls');
+    if(!controls) return;
+    controls.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.pdf-zoom-btn');
+      if(!btn) return;
+      const dir = btn.getAttribute('data-zoom');
+      if(dir === 'in' || dir === 'out') changePdfZoom(dir);
+    });
+  }
+
   function openModal(file, meta){
     const modal = document.getElementById('fileModal');
     const viewer = document.getElementById('viewer');
     const loader = document.getElementById('fileModalLoader');
     const error = document.getElementById('fileModalError');
-    const canvas = document.getElementById('pdf-canvas');
+    const pdfContainer = document.getElementById('pdf-container');
     const metaBox = document.getElementById('fileModalMeta');
-    if(!modal || (!viewer && !canvas)) return;
-    if(loader) loader.style.display = 'flex';
+    if(!modal || (!viewer && !pdfContainer)) return;
     if(error) error.style.display = 'none';
-    if(viewer) viewer.style.display = 'block';
-    if(canvas) canvas.style.display = 'none';
+    if(pdfContainer){
+      pdfContainer.style.display = 'none';
+      pdfContainer.innerHTML = '';
+    }
     modal.classList.add('show'); modal.style.display = 'block';
     if(metaBox){
-      if(meta && meta.title){ metaBox.style.display = 'block'; metaBox.innerHTML = `<div class="meta-title">${meta.title}</div>`; }
-      else { metaBox.style.display = 'none'; metaBox.innerHTML = ''; }
+      metaBox.style.display = 'none';
+      metaBox.innerHTML = '';
     }
-    viewer.src = file;
-    let loaded = false;
-    const onLoad = ()=>{ loaded = true; if(loader) loader.style.display = 'none'; if(error) error.style.display = 'none'; cleanup(); };
-    const onError = ()=>{ loaded = false; if(loader) loader.style.display = 'none'; if(error) error.style.display = 'flex'; cleanup(); };
-    const timeoutId = setTimeout(()=>{ if(!loaded){ if(loader) loader.style.display = 'none'; if(error) error.style.display = 'flex'; } }, 3000);
-    function cleanup(){ viewer.removeEventListener('load', onLoad); viewer.removeEventListener('error', onError); clearTimeout(timeoutId); }
-    viewer.addEventListener('load', onLoad); viewer.addEventListener('error', onError);
+    const isPdf = typeof file === 'string' && file.trim().toLowerCase().includes('.pdf');
+    if(isPdf && pdfContainer){
+      _pdfSource = file;
+      _pdfZoom = PDF_ZOOM_DEFAULT;
+      updatePdfZoomLabel();
+      setPdfControlsVisible(true);
+      if(viewer){ viewer.style.display = 'none'; viewer.removeAttribute('src'); }
+      renderPdfDocument(file, pdfContainer, loader, error, _pdfZoom);
+    } else if(viewer){
+      _pdfSource = null;
+      setPdfControlsVisible(false);
+      if(pdfContainer){ pdfContainer.style.display = 'none'; }
+      viewer.style.display = 'block';
+      viewer.src = file;
+      let loaded = false;
+      const onLoad = ()=>{ loaded = true; if(loader) loader.style.display = 'none'; if(error) error.style.display = 'none'; cleanup(); };
+      const onError = ()=>{ loaded = false; if(loader) loader.style.display = 'none'; if(error) error.style.display = 'flex'; cleanup(); };
+      const timeoutId = setTimeout(()=>{ if(!loaded){ if(loader) loader.style.display = 'none'; if(error) error.style.display = 'flex'; } }, 3000);
+      function cleanup(){ viewer.removeEventListener('load', onLoad); viewer.removeEventListener('error', onError); clearTimeout(timeoutId); }
+      viewer.addEventListener('load', onLoad); viewer.addEventListener('error', onError);
+    } else {
+      _pdfSource = null;
+      setPdfControlsVisible(false);
+      if(loader) loader.style.display = 'none';
+      if(error){ error.style.display = 'flex'; error.textContent = 'Preview unavailable.'; }
+    }
   }
 
   // Note: modal-based profile embedding removed; officer clicks now open Facebook directly.
 
-  let _pdfDoc = null; let _renderTask = null;
-  function renderPdfToCanvas(url, canvas, loader, error){
-    if(!canvas) return;
+  let _pdfDoc = null;
+  let _renderTasks = [];
+
+  function clearPdfRendering(){
+    _renderTasks.forEach(task=>{ try{ task.cancel(); }catch(e){} });
+    _renderTasks = [];
+    if(_pdfDoc){ try{ _pdfDoc.destroy(); }catch(e){} _pdfDoc = null; }
+  }
+
+  function renderPdfDocument(url, container, loader, error, zoomMultiplier = PDF_ZOOM_DEFAULT){
+    if(!container || !url) return;
     try{
       if(!(window.pdfjsLib && window.pdfjsLib.getDocument)) throw new Error('pdfjsLib not found');
-      if(window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions) window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'Static/vendor/pdfjs/pdf.worker.min.js';
+      if(window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions) window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
     }catch(e){ console.error('PDF.js not available:', e); if(loader) loader.style.display = 'none'; if(error){ error.style.display = 'flex'; error.textContent = 'Preview unavailable (PDF renderer not loaded).'; } return; }
-    if(_renderTask){ try{ _renderTask.cancel(); }catch(e){} _renderTask = null; }
-    if(_pdfDoc){ try{ _pdfDoc.destroy(); }catch(e){} _pdfDoc = null; }
-    const viewer = document.getElementById('viewer'); if(viewer) viewer.style.display = 'none'; canvas.style.display = 'block';
-    const ctx = canvas.getContext('2d');
+    clearPdfRendering();
+    container.innerHTML = '';
+    container.style.display = 'block';
+    container.scrollTop = 0;
+    if(error) error.style.display = 'none';
+    const zoom = typeof zoomMultiplier === 'number' ? zoomMultiplier : PDF_ZOOM_DEFAULT;
     let loadingTask;
-    try{ loadingTask = window.pdfjsLib.getDocument(url); }catch(err){ console.error('getDocument failed:', err); if(loader) loader.style.display = 'none'; if(error){ error.style.display = 'flex'; error.textContent = 'Preview unavailable (failed to load document).'; } return; }
-    loadingTask.promise.then(function(pdf){ _pdfDoc = pdf; return pdf.getPage(1).then(function(page){ const modalBox = document.querySelector('.file-modal__box'); const containerWidth = (modalBox && modalBox.clientWidth) || 800; const unscaledViewport = page.getViewport({scale: 1}); let scale = containerWidth / unscaledViewport.width; const outputScale = window.devicePixelRatio || 1; const renderViewport = page.getViewport({scale: scale * outputScale}); canvas.width = Math.floor(renderViewport.width); canvas.height = Math.floor(renderViewport.height); canvas.style.width = Math.floor(renderViewport.width / outputScale) + 'px'; canvas.style.height = Math.floor(renderViewport.height / outputScale) + 'px'; ctx.clearRect(0,0,canvas.width,canvas.height); const renderContext = { canvasContext: ctx, viewport: renderViewport }; _renderTask = page.render(renderContext); return _renderTask.promise.then(function(){ if(loader) loader.style.display = 'none'; }); }); }).catch(function(err){ console.error('PDF render error:', err); if(loader) loader.style.display = 'none'; if(error){ error.style.display = 'flex'; error.textContent = 'Preview unavailable (error rendering PDF).'; } });
+    try{ loadingTask = window.pdfjsLib.getDocument(url); }catch(err){ console.error('getDocument failed:', err); if(loader) loader.style.display = 'none'; if(error){ error.style.display = 'flex'; error.textContent = 'Preview unavailable (failed to load document).'; } container.style.display = 'none'; return; }
+    loadingTask.promise.then(function(pdf){
+      _pdfDoc = pdf;
+      const renderSequentially = async ()=>{
+        for(let pageNum = 1; pageNum <= pdf.numPages; pageNum++){
+          const page = await pdf.getPage(pageNum);
+          const canvas = document.createElement('canvas');
+          canvas.className = 'pdf-page';
+          container.appendChild(canvas);
+          const ctx = canvas.getContext('2d');
+          const modalBox = document.querySelector('.file-modal__box');
+          const availableWidth = Math.max(((modalBox && modalBox.clientWidth) || 800) - 60, 320);
+          const unscaledViewport = page.getViewport({scale: 1});
+          const baseScale = availableWidth / unscaledViewport.width;
+          const scale = baseScale * zoom;
+          const displayViewport = page.getViewport({scale});
+          const outputScale = window.devicePixelRatio || 1;
+          const renderViewport = page.getViewport({scale: scale * outputScale});
+          canvas.width = Math.floor(renderViewport.width);
+          canvas.height = Math.floor(renderViewport.height);
+          canvas.style.width = Math.floor(displayViewport.width) + 'px';
+          canvas.style.height = Math.floor(displayViewport.height) + 'px';
+          const renderContext = {
+            canvasContext: ctx,
+            viewport: renderViewport
+          };
+          const task = page.render(renderContext);
+          _renderTasks.push(task);
+          await task.promise;
+        }
+      };
+      return renderSequentially().then(()=>{ if(loader) loader.style.display = 'none'; });
+    }).catch(function(err){
+      if(err && err.name === 'RenderingCancelledException'){
+        return; // user initiated re-render; ignore
+      }
+      console.error('PDF render error:', err);
+      clearPdfRendering();
+      container.style.display = 'none';
+      if(loader) loader.style.display = 'none';
+      if(error){ error.style.display = 'flex'; error.textContent = 'Preview unavailable (error rendering PDF).'; }
+    });
   }
 
   function closeModal(){
-    const modal = document.getElementById('fileModal'); const viewer = document.getElementById('viewer'); if(!modal || !viewer) return; viewer.src = ''; const loader = document.getElementById('fileModalLoader'); const error = document.getElementById('fileModalError'); if(loader) loader.style.display = 'none'; if(error) error.style.display = 'none'; if(_renderTask){ try{ _renderTask.cancel(); }catch(e){} _renderTask = null; } if(_pdfDoc){ try{ _pdfDoc.destroy(); }catch(e){} _pdfDoc = null; } const canvas = document.getElementById('pdf-canvas'); if(canvas){ const ctx = canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height); canvas.style.display = 'none'; } modal.classList.remove('show'); modal.style.display = 'none';
+    const modal = document.getElementById('fileModal');
+    const viewer = document.getElementById('viewer');
+    if(!modal) return;
+    const loader = document.getElementById('fileModalLoader');
+    const error = document.getElementById('fileModalError');
+    const pdfContainer = document.getElementById('pdf-container');
+    if(viewer){ viewer.src = ''; viewer.style.display = 'none'; }
+    if(pdfContainer){ pdfContainer.innerHTML = ''; pdfContainer.style.display = 'none'; }
+    if(loader) loader.style.display = 'none';
+    if(error) error.style.display = 'none';
+    clearPdfRendering();
+    _pdfSource = null;
+    _pdfZoom = PDF_ZOOM_DEFAULT;
+    updatePdfZoomLabel();
+    setPdfControlsVisible(false);
+    modal.classList.remove('show');
+    modal.style.display = 'none';
   }
 
   document.addEventListener('DOMContentLoaded', ()=>{
-    renderList(el('resolutions'), data.resolutions);
-    renderList(el('activity-proposals'), data.activityProposals);
-    renderList(el('project-proposals'), data.projectProposals);
-    renderList(el('minutes'), data.minutes);
+    initializeDocumentSections();
     renderOfficers(el('executives'), data.officers.executives);
     renderOfficers(el('board-members'), data.officers.boardMembers);
     // render committees as dropdown cards (placed under Board Members on the Officers page)
@@ -396,10 +624,14 @@
 
     const navToggle = el('nav-toggle');
     const mainNav = document.querySelector('.sidebar .main-nav');
+    const headerBrand = document.getElementById('header-brand');
+
+    function toggleHeaderBrand(route){ if(!headerBrand) return; headerBrand.hidden = (route === 'home'); }
 
     function closeMobileNav(){ if(mainNav){ mainNav.classList.remove('open'); } if(navToggle){ navToggle.setAttribute('aria-expanded','false'); } }
-    function showRoute(route){ document.querySelectorAll('.page').forEach(p=>p.hidden=true); const elRoute = document.getElementById(route) || document.getElementById('home'); elRoute.hidden = false; document.querySelectorAll('.main-nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('data-route')===route)); closeMobileNav(); }
-    function showRouteWithLoading(route){ document.getElementById('loading').style.display = 'flex'; document.querySelectorAll('.page').forEach(p=>p.hidden=true); setTimeout(() => { document.getElementById('loading').style.display = 'none'; const elRoute = document.getElementById(route) || document.getElementById('home'); elRoute.hidden = false; document.querySelectorAll('.main-nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('data-route')===route)); closeMobileNav(); }, 1500); }
+    function resolveRoute(route){ return (route && document.getElementById(route)) ? route : 'home'; }
+    function showRoute(route){ const resolved = resolveRoute(route); document.querySelectorAll('.page').forEach(p=>p.hidden=true); const elRoute = document.getElementById(resolved); if(elRoute) elRoute.hidden = false; document.querySelectorAll('.main-nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('data-route')===resolved)); toggleHeaderBrand(resolved); closeMobileNav(); }
+    function showRouteWithLoading(route){ const resolved = resolveRoute(route); document.getElementById('loading').style.display = 'flex'; document.querySelectorAll('.page').forEach(p=>p.hidden=true); setTimeout(() => { document.getElementById('loading').style.display = 'none'; const elRoute = document.getElementById(resolved) || document.getElementById('home'); if(elRoute) elRoute.hidden = false; document.querySelectorAll('.main-nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('data-route')===resolved)); toggleHeaderBrand(resolved); closeMobileNav(); }, 1500); }
     function handleHash(){ const r = location.hash.replace('#','') || 'home'; showRoute(r); }
     function handleHashWithLoading(){ const r = location.hash.replace('#','') || 'home'; showRouteWithLoading(r); }
 
@@ -408,11 +640,14 @@
     const modalClose = el('fileModalClose'); const modal = el('fileModal'); const modalBackdrop = el('fileModalBackdrop'); if(modalClose) modalClose.addEventListener('click', closeModal); if(modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
 
     document.addEventListener('click', (e)=>{ if(!mainNav || !navToggle) return; if(!mainNav.classList.contains('open')) return; const target = e.target; if(target === navToggle || navToggle.contains(target)) return; if(mainNav.contains(target)) return; closeMobileNav(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMobileNav(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeMobileNav(); closePhotoLightbox(); } });
     window.addEventListener('hashchange', handleHashWithLoading); handleHash();
 
     const ld = document.getElementById('loading'); if(ld) ld.style.display = 'none';
-    initAboutPhotoCard(); setupDocumentSearch(); initHomeSlider();
+    initAboutPhotoCard(); setupDocumentSearch(); setupDocumentFilter(); initPdfZoomControls();
+    const eventGalleryContainer = el('events-gallery-list');
+    renderEventGalleries(eventGalleryContainer, eventGallerySets);
+    setupEventGallerySearch(el('eventGallerySearch'), eventGalleryContainer);
     // Populate About page galleries (current officers + events) using simple sliders
     try{
       const aboutOfficersEl = el('about-current-officers');
@@ -426,9 +661,36 @@
       initAboutSlider(aboutOfficersEl, [taglinePath], { interval: 3800, caption: 'Term Tagline' });
       initAboutSlider(aboutEventsEl, dashboardPhotos, { interval: 3000, caption: 'Events & Activities' });
     }catch(e){/* ignore if about page not present */}
+
+    const photoLightboxClose = el('photoLightboxClose');
+    const photoLightboxBackdrop = el('photoLightboxBackdrop');
+    if(photoLightboxClose) photoLightboxClose.addEventListener('click', closePhotoLightbox);
+    if(photoLightboxBackdrop) photoLightboxBackdrop.addEventListener('click', closePhotoLightbox);
   });
 
   const dashboardPhotos = [ 'Dashboard-Photos/IMG_1195.png', 'Dashboard-Photos/IMG_1462.png', 'Dashboard-Photos/IMG_1498.png' ];
+  const eventGallerySets = [
+    {
+      title: "Foundation Week '25",
+      folder: "Event Gallery Materials/Foundation Week '25",
+      photos: []
+    },
+    {
+      title: 'Pande Kape ni Kabsuy - 1st Semester',
+      folder: 'Event Gallery Materials/Pande Kape ni Kabsuy - 1st Semester',
+      photos: []
+    },
+    {
+      title: "Paskuhan '25",
+      folder: "Event Gallery Materials/Paskuhan '25",
+      photos: []
+    },
+    {
+      title: "Student Leadership Training Program '25",
+      folder: 'Event Gallery Materials/SLTP',
+      photos: ['IMG_1195.png','IMG_1462.png','IMG_1498.png']
+    }
+  ];
 
   function initAboutPhotoCard(){
     const img = document.getElementById('about-photo-img'); if(!img) return; let idx = 0;
@@ -437,15 +699,6 @@
     (async function start(){ for(const src of dashboardPhotos){ try{ await preload(src); img.src = src; break; }catch(e){} } if(!img.src && dashboardPhotos.length) img.src = dashboardPhotos[0]; })();
     const intervalId = setInterval(nextPhoto, 4000);
     const observer = new MutationObserver(()=>{ if(!document.getElementById('about-photo-img')){ clearInterval(intervalId); observer.disconnect(); } });
-    observer.observe(document.body, {childList:true, subtree:true});
-  }
-
-  function initHomeSlider(){
-    const img = document.getElementById('hero-slide-img'); if(!img) return; let idx = 0; function preload(src){ return new Promise((resolve,reject)=>{ const i = new Image(); i.onload = ()=>resolve(src); i.onerror = ()=>reject(src); i.src = src; }); }
-    async function showNext(){ if(!img) return; const nextIdx = (idx + 1) % dashboardPhotos.length; const nextSrc = dashboardPhotos[nextIdx]; try{ await preload(nextSrc); }catch(e){} img.classList.add('fading'); setTimeout(()=>{ img.src = nextSrc; img.classList.remove('fading'); }, 300); idx = nextIdx; }
-    (async function start(){ for(const s of dashboardPhotos){ try{ await preload(s); img.src = s; break; }catch(e){} } if(!img.src && dashboardPhotos.length) img.src = dashboardPhotos[0]; })();
-    const intervalId = setInterval(showNext, 4000);
-    const observer = new MutationObserver(()=>{ if(!document.getElementById('hero-slide-img')){ clearInterval(intervalId); observer.disconnect(); }});
     observer.observe(document.body, {childList:true, subtree:true});
   }
 
@@ -512,5 +765,154 @@
     const id = setInterval(next, interval);
     // store timer reference so it can be cleared if element removed
     container._sliderInterval = id;
+  }
+
+  function initScrollingGallery(container, images){
+    if(!container) return;
+    const validImages = (images || []).map(src => (typeof src === 'string' ? src.trim() : '')).filter(Boolean);
+    container.classList.remove('gallery');
+    container.classList.add('scroll-gallery');
+    container.innerHTML = '';
+
+    if(!validImages.length){
+      const placeholderWrap = document.createElement('div');
+      placeholderWrap.className = 'scroll-gallery__placeholders';
+      const placeholderCount = 4;
+      for(let i=0;i<placeholderCount;i++){
+        const placeholder = document.createElement('div');
+        placeholder.className = 'scroll-gallery__item scroll-gallery__item--placeholder';
+        placeholder.textContent = 'For Uploading';
+        placeholderWrap.appendChild(placeholder);
+      }
+      container.appendChild(placeholderWrap);
+      return;
+    }
+
+    const imgs = validImages.map(src => src || 'CSG.png');
+    const track = document.createElement('div');
+    track.className = 'scroll-gallery-track';
+    const minItems = 8;
+    const repeats = Math.max(2, Math.ceil(minItems / imgs.length));
+    const loop = [];
+    for(let i=0;i<repeats;i++){ loop.push(...imgs); }
+    loop.forEach(src => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'scroll-gallery__item';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = "Student Leadership Training Program '25";
+      btn.appendChild(img);
+      btn.addEventListener('click', ()=> openPhotoLightbox(src));
+      track.appendChild(btn);
+    });
+    container.appendChild(track);
+    startGalleryLoop(container, track, loop.length);
+  }
+
+  function startGalleryLoop(container, track, totalItems){
+    if(!track || !container) return;
+    let offset = 0;
+    const speed = 0.35;
+    let loopWidth = track.scrollWidth * (0.5); // half of the duplicated track
+    let rafId = null;
+
+    function step(){
+      offset -= speed;
+      if(-offset >= loopWidth){ offset += loopWidth; }
+      track.style.transform = `translateX(${offset}px)`;
+      rafId = requestAnimationFrame(step);
+    }
+
+    function start(){ if(rafId === null){ rafId = requestAnimationFrame(step); } }
+    function stop(){ if(rafId !== null){ cancelAnimationFrame(rafId); rafId = null; } }
+
+    start();
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+    window.addEventListener('resize', ()=>{ loopWidth = track.scrollWidth * 0.5; });
+  }
+
+  function buildGallerySrc(folder, entry){
+    const sanitize = (value)=> (value || '').replace(/\\/g,'/').split('/').filter(Boolean);
+    let segments = [];
+    if(entry && entry.includes('/')){
+      segments = sanitize(entry);
+    } else {
+      segments = sanitize(folder).concat(entry ? [entry] : []);
+    }
+    if(!segments.length) return '';
+    return segments.map(seg => encodeURIComponent(seg)).join('/');
+  }
+
+  function renderEventGalleries(container, events){
+    if(!container || !events) return;
+    container.innerHTML = '';
+    const cards = [];
+    events.forEach((event, idx)=>{
+      const card = document.createElement('div');
+      card.className = 'event-gallery-card';
+
+      const header = document.createElement('div');
+      header.className = 'event-gallery__header';
+      const title = document.createElement('h3');
+      title.className = 'event-gallery__title';
+      const label = event && event.title ? event.title : `Event ${idx + 1}`;
+      title.textContent = label;
+      card.dataset.eventTitle = label.toLowerCase();
+      header.appendChild(title);
+      card.appendChild(header);
+
+      const galleryEl = document.createElement('div');
+      galleryEl.className = 'scroll-gallery';
+      card.appendChild(galleryEl);
+      container.appendChild(card);
+      cards.push(card);
+
+      const sources = ((event && event.photos) || []).map(photo => buildGallerySrc(event.folder, photo)).filter(Boolean);
+      initScrollingGallery(galleryEl, sources);
+    });
+    const empty = document.createElement('div');
+    empty.className = 'event-gallery__empty';
+    empty.textContent = 'No events match your search.';
+    empty.hidden = true;
+    container.appendChild(empty);
+    container._eventCards = cards;
+    container._eventEmptyState = empty;
+  }
+
+  function setupEventGallerySearch(input, container){
+    if(!input || !container) return;
+    const applyFilter = ()=>{
+      const term = (input.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+      (container._eventCards || []).forEach(card => {
+        const title = card.dataset.eventTitle || '';
+        const matches = !term || title.includes(term);
+        card.style.display = matches ? '' : 'none';
+        if(matches) visibleCount++;
+      });
+      if(container._eventEmptyState){
+        container._eventEmptyState.hidden = visibleCount !== 0;
+      }
+    };
+    input.addEventListener('input', applyFilter);
+    applyFilter();
+  }
+
+  function openPhotoLightbox(src){
+    const modal = document.getElementById('photoLightbox');
+    const img = document.getElementById('photoLightboxImage');
+    if(!modal || !img) return;
+    img.src = src || 'CSG.png';
+    modal.hidden = false;
+  }
+
+  function closePhotoLightbox(){
+    const modal = document.getElementById('photoLightbox');
+    if(!modal) return;
+    const img = document.getElementById('photoLightboxImage');
+    if(img) img.src = '';
+    modal.hidden = true;
   }
 })();

@@ -13,7 +13,7 @@
         <header class="site-header">
             <div class="wrap">
                 <button id="nav-toggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-                <h1 class="brand">Transparency Hub</h1>
+                <h1 id="header-brand" class="brand">Transparency Hub</h1>
             </div>
         </header>
 
@@ -26,6 +26,7 @@
 
                 <a href="#home" data-route="home" class="active">Home</a>
                 <a href="#documents" data-route="documents">Documents</a>
+                <a href="#events" data-route="events">Event Gallery</a>
                 <a href="#officers" data-route="officers">Officers</a>
                 <a href="#about" data-route="about">About</a>
             </nav>
@@ -33,46 +34,73 @@
 
         <main class="wrap" id="app">
             <section id="home" class="page">
-                <div class="hero">
-                    <div class="hero-slider">
-                        <img id="hero-slide-img" src="" alt="Hero slide" />
-                        <div class="hero-overlay">
-                            <p class="lead">Official approved resolutions, proposals, project plans, and minutes of meeting for the <br>Central Student Government — Imus Campus.</p>
-                            <div class="quick-links overlay-links">
-                                <a href="#documents" class="card">View Documents</a>
-                                <a href="#officers" class="card">Officers</a>
-                                <a href="#about" class="card">About CSG</a>
-                            </div>
+                <div class="hero hero--simple">
+                    <div class="hero-content">
+                        <h2 class="hero-title">Transparency Hub</h2>
+                        <p class="lead">Explore official records, resolutions, project plans, reports, and the Event Gallery showcasing every Central Student Government — Imus Campus milestone.</p>
+                        <div class="quick-links">
+                            <a href="https://www.facebook.com/CSGImus" class="card" target="_blank" rel="noopener">Visit Facebook Page</a>
                         </div>
                     </div>
+                    <div class="hero-media" aria-hidden="true">
+                        <img src="CSG.png" alt="Central Student Government logo" loading="lazy" />
+                    </div>
                 </div>
-
-                <!-- Home grid removed: Latest Updates section removed per request -->
             </section>
 
             <section id="documents" class="page" hidden>
                 <div class="documents-header">
                     <h2 class="documents-title">Documents</h2>
                     <div class="documents-controls">
-                        <input id="documents-search" class="documents-search" type="search" placeholder="Search documents by id or title…" aria-label="Search documents" />
+                        <div class="documents-searchbar" role="search">
+                            <svg class="documents-searchbar__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M15.5 14h-.79l-.28-.27a6 6 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor" />
+                            </svg>
+                            <input id="documents-search" class="documents-search-input" type="search" placeholder="Search documents" aria-label="Search documents" />
+                        </div>
+                        <label class="documents-filter" for="documents-filter">
+                            <span class="documents-filter__label">Type</span>
+                            <select id="documents-filter" class="documents-filter__select" aria-label="Filter documents">
+                                <option value="recent" selected>Recent</option>
+                                <option value="resolutions">Resolutions</option>
+                                <option value="accomplishment-reports">Accomplishment Reports</option>
+                                <option value="financial-statements">Financial Statements</option>
+                                <option value="office-memorandums">Office Memorandum</option>
+                                <option value="activity-proposals">Activity Proposals</option>
+                                <option value="project-proposals">Project Proposals</option>
+                                <option value="minutes">Minutes of Meeting</option>
+                            </select>
+                        </label>
                     </div>
                 </div>
                 <div class="docs-grid">
-                    <div class="doc-col">
+                    <div class="doc-col" data-doc-type="resolutions">
                         <h3>Approved Resolutions</h3>
                         <div id="resolutions" class="doc-list"></div>
                     </div>
-                    <div class="doc-col">
+                    <div class="doc-col" data-doc-type="activity-proposals">
                         <h3>Activity Proposals</h3>
                         <div id="activity-proposals" class="doc-list"></div>
                     </div>
-                    <div class="doc-col">
+                    <div class="doc-col" data-doc-type="project-proposals">
                         <h3>Project Proposals</h3>
                         <div id="project-proposals" class="doc-list"></div>
                     </div>
-                    <div class="doc-col">
+                    <div class="doc-col" data-doc-type="minutes">
                         <h3>Minutes of Meeting</h3>
                         <div id="minutes" class="doc-list"></div>
+                    </div>
+                    <div class="doc-col" data-doc-type="office-memorandums">
+                        <h3>Office Memorandum</h3>
+                        <div id="office-memorandums" class="doc-list"></div>
+                    </div>
+                    <div class="doc-col" data-doc-type="accomplishment-reports">
+                        <h3>Accomplishment Reports</h3>
+                        <div id="accomplishment-reports" class="doc-list"></div>
+                    </div>
+                    <div class="doc-col" data-doc-type="financial-statements">
+                        <h3>Financial Statements</h3>
+                        <div id="financial-statements" class="doc-list"></div>
                     </div>
                 </div>
             </section>
@@ -123,6 +151,19 @@
                     </div>
                 </div>
             </section>
+
+            <section id="events" class="page" hidden>
+                <div class="event-gallery-header">
+                    <h2>Event Gallery</h2>
+                    <div class="documents-searchbar event-gallery-searchbar" role="search">
+                        <svg class="documents-searchbar__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M15.5 14h-.79l-.28-.27a6 6 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor" />
+                        </svg>
+                        <input id="eventGallerySearch" class="documents-search-input" type="search" placeholder="Search events" aria-label="Search events" />
+                    </div>
+                </div>
+                <div id="events-gallery-list" class="event-gallery-list"></div>
+            </section>
         </main>
 
         <footer class="site-footer">
@@ -141,13 +182,29 @@
                         <div>Preview unavailable.</div>
                     </div>
                     <iframe id="viewer" frameborder="0" aria-label="Document preview" style="display:none"></iframe>
-                    <canvas id="pdf-canvas" style="display:none"></canvas>
-                    <!-- floating close button (lower-right) -->
-                    <button class="file-modal__floating-close" id="fileModalClose" aria-label="Close preview">×</button>
+                    <div id="pdf-container" class="pdf-container" style="display:none"></div>
+                    <div class="file-modal__actions">
+                        <div id="pdfControls" class="pdf-controls" hidden>
+                            <button type="button" class="pdf-zoom-btn" data-zoom="out" aria-label="Zoom out">-</button>
+                            <div class="pdf-zoom-value" id="pdfZoomValue">90%</div>
+                            <button type="button" class="pdf-zoom-btn" data-zoom="in" aria-label="Zoom in">+</button>
+                        </div>
+                        <!-- floating close button (lower-right) -->
+                        <button class="file-modal__floating-close" id="fileModalClose" aria-label="Close preview">×</button>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <div id="photoLightbox" class="photo-lightbox" hidden>
+            <div id="photoLightboxBackdrop" class="photo-lightbox__backdrop"></div>
+            <div class="photo-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Event photo preview">
+                <button type="button" class="photo-lightbox__close" id="photoLightboxClose" aria-label="Close image">×</button>
+                <img id="photoLightboxImage" src="" alt="Event photo preview" />
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="Static/main.js"></script>
     </body>
 </html>

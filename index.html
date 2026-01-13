@@ -28,7 +28,7 @@
                 <a href="#documents" data-route="documents">Documents</a>
                 <a href="#events" data-route="events">Event Gallery</a>
                 <a href="#officers" data-route="officers">Officers</a>
-                <a href="#about" data-route="about">About</a>
+                <a href="#about" data-route="about">About CSG</a>
             </nav>
         </aside>
 
@@ -71,6 +71,12 @@
                                 <option value="minutes">Minutes of Meeting</option>
                             </select>
                         </label>
+                        <label class="documents-filter" for="documents-term">
+                            <span class="documents-filter__label">Term</span>
+                            <select id="documents-term" class="documents-filter__select" aria-label="Filter documents by term">
+                                <option value="all">All terms</option>
+                            </select>
+                        </label>
                     </div>
                 </div>
                 <div class="docs-grid">
@@ -106,7 +112,7 @@
             </section>
 
             <section id="officers" class="page" hidden>
-                <h2 class="term-heading">Academic Year 2025 - 2026 Officers</h2>
+                <h2 class="term-heading">Academic Year 2025 - 2026</h2>
                 <div class="officer-section">
                     <h3>Executives</h3>
                     <div id="executives" class="officer-list"></div>

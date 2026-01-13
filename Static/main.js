@@ -5,33 +5,68 @@
   const PDF_ZOOM_STEP = 0.1;
   const PDF_ZOOM_MIN = 0.6;
   const PDF_ZOOM_MAX = 1.5;
+  const CURRENT_TERM = 'A.Y. 2025 - 2026';
+  const CURRENT_SEMESTER = '1st Semester';
   let _pdfZoom = PDF_ZOOM_DEFAULT;
   let _pdfSource = null;
   const data = {
     resolutions: [
-      {id: 'RESO 1', title: 'TEMPORARY ASSUMPTION OF FINANCIAL RESPONSIBILITIES', date: '', file: 'files/Resolution/RESO 1 - TEMPORARY ASSUMPTION OF FINANCIAL RESPONSIBILITIES.pdf'},
-      {id: 'RESO 2', title: 'BUDGET ALLOCATION FOR SLTP', date: '', file: 'files/Resolution/RESO 2 - BUDGET ALLOCATION FOR SLTP.pdf'},
-      {id: 'RESO 3', title: 'DISCOUNT PAYMENT FOR SLTP SHIRT', date: '', file: 'files/Resolution/RESO 3 - DISCOUNT PAYMENT FOR SLTP SHIRT.pdf'},
-      {id: 'RESO 4', title: 'INSTITUTIONALIZE OF UNIFORM DONATION', date: '', file: 'files/Resolution/RESO 4 - INSTITUTIONALIZE OF UNIFORM DONATION.pdf'},
-      {id: 'RESO 5', title: 'SELECTING OF NEW CSG ADVISER', date: '', file: 'files/Resolution/RESO 5 - SELECTING OF NEW CSG ADVISER.pdf'},
-      {id: 'RESO 6', title: 'APPOINTING OF TREASURER GENERAL AND SAP BA AND SAPOFAD', date: '', file: 'files/Resolution/RESO 6 - APPOINTING OF TREASURER GENERAL AND SAP BA AND SAPOFAD.pdf'},
-      {id: 'RESO 7', title: 'ADJUSTING DATES FOR SLTP', date: '', file: 'files/Resolution/RESO 7 - ADJUSTING DATES FOR SLTP.pdf'},
-      {id: 'RESO 8', title: 'ALLOCATING BUDGET FOR PANDE-KAPE', date: '', file: 'files/Resolution/RESO 8 - ALLOCATING BUDGET FOR PANDE-KAPE.pdf'},
-      {id: 'RESO 9', title: 'SELECTING NEW CSG ADVISER', date: '', file: 'files/Resolution/RESO 9 - SELECTING NEW CSG ADVISER.pdf'},
-      {id: 'RESO 10', title: 'OPENING OF COA TO ALL EXECUTIVES WITH GUIDELINES', date: '', file: 'files/Resolution/RESO 10 - OPENING OF COA TO ALL EXECUTIVES WITH GUIDELINES.pdf'}
+      {id: 'Resolution 1', title: 'Temporary Assumption of Financial Responsibilities', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 1 - Temporary Assumption of Financial Responsibilities.pdf'},
+      {id: 'Resolution 2', title: 'Budget Allocation for SLTP', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 2 - Budget Allocation for SLTP.pdf'},
+      {id: 'Resolution 3', title: 'Discount Payment for SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 3 - Discount Payment for SLTP Shirt.pdf'},
+      {id: 'Resolution 4', title: 'Institutionalize of Uniform Donation', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 4 - Institutionalize of Uniform Donation.pdf'},
+      {id: 'Resolution 5', title: 'Selecting of New CSG Adviser', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 5 - Selecting of New CSG Adviser.pdf'},
+      {id: 'Resolution 6', title: 'Appointing of Treasurer General, SAP BA, and SAP OFAD', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 6 - Appointing of Treasurer General, SAP BA, and SAP OFAD.pdf'},
+      {id: 'Resolution 7', title: 'Adjusting of SLTP Dates', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 7 - Adjusting of SLTP Dates.pdf'},
+      {id: 'Resolution 8', title: 'Allocating Budget for Pande-Kape ni Kabsuy', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 8 - Allocating Budget for Pande-Kape ni Kabsuy.pdf'},
+      {id: 'Resolution 9', title: 'Selecting of New Adviser', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 9 - Selecting of New Adviser.pdf'},
+      {id: 'Resolution 10', title: 'Opening of COA to All Executives excluding Treasurers and Auditors', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 10 - Opening of COA to All Executives excluding Treasurers and Auditors.pdf'},
+      {id: 'Resolution 11', title: 'Creating Ad Hoc Committee on Website Development', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 11 - Creating Ad Hoc Committee on Website Development.pdf'},
+      {id: 'Resolution 12', title: 'PHASE 1 COMMENCEMENT FOR OITS', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 12 - PHASE 1 COMMENCEMENT FOR OITS.pdf'},
+      {id: 'Resolution 13', title: 'Establishment of Committee of the CSG', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 13 - Establishment of Committee of the CSG.pdf'},
+      {id: 'Resolution 14', title: 'Appointing of GAD Repre and Assistant Auditor', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 14 - Appointing of GAD Repre and Assistant Auditor.pdf'},
+      {id: 'Resolution 16', title: 'Budget Allocation for Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 16 - Budget Allocation for Student Hours.pdf'},
+      {id: 'Resolution 17', title: 'Budget Allocation for Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 17 - Budget Allocation for Level-Up Paskuhan.pdf'},
+      {id: 'Resolution 18', title: 'Budget Allocation for Pelikulaya', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 18 - Budget Allocation for Pelikulaya.pdf'},
+      {id: 'Resolution 20', title: "Student Hours' MASAsagot Mo Ba, The Game Show", term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: "files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 20 - Student Hours' MASAsagot Mo Ba, The Game Show.pdf"}
     ],
     accomplishmentReports: [],
     financialStatements: [],
-    officeMemorandums: [],
-    activityProposals: [],
+    officeMemorandums: [
+      {id: 'Office Memorandum 1', title: '3rd General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 1 - 3rd General Meeting.pdf'}
+    ],
+    activityProposals: [
+      {id: 'Activity Proposal - SLTP', title: 'SLTP', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - SLTP.pdf'}
+    ],
     projectProposals: [
-      {id: 'PP - Panamitang-Bayani', title: 'Panamitang-Bayani', date: '', file: 'files/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
-      {id: 'PP - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', date: '', file: 'files/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
-      {id: 'PP - SLTP Shirt', title: 'SLTP Shirt', date: '', file: 'files/Project Proposal/Project Proposal - SLTP Shirt.pdf'},
-      {id: 'PP - SLTP', title: 'SLTP', date: '', file: 'files/Project Proposal/Project Proposal - SLTP.pdf'}
+      {id: 'Project Proposal - Chat.CSG', title: 'Chat.CSG', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Chat.CSG.pdf'},
+      {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'},
+      {id: 'Project Proposal - CSG Year-End Party', title: 'CSG Year-End Party', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Year-End Party.pdf'},
+      {id: 'Project Proposal - Level-Up Paskuhan', title: 'Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Level-Up Paskuhan.pdf'},
+      {id: 'Project Proposal - MASAsagot Mo Ba', title: 'MASAsagot Mo Ba', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - MASAsagot Mo Ba.pdf'},
+      {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
+      {id: 'Project Proposal - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
+      {id: 'Project Proposal - PELIKULAYA', title: 'PELIKULAYA', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - PELIKULAYA.pdf'},
+      {id: 'Project Proposal - SLTP Shirt', title: 'SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - SLTP Shirt.pdf'},
+      {id: 'Project Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Student Hours.pdf'}
     ],
     minutes: [
-      {id: 'MINUTES - OCT 16 2023', title: 'OCT 16 2023 - 1 PM', date: '2023-10-16', file: 'files/Minutes of the Meeting/OCT 16 2023 - 1 PM.pdf'}
+      {id: 'Minutes - September 17, 2025', title: 'SDS Office (F2F)', date: '2025-09-17', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 17, 2025 - SDS Office (F2F).pdf'},
+      {id: 'Minutes - September 18, 2025', title: 'Google Meet', date: '2025-09-18', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 18, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - September 19, 2025', title: 'Google Meet', date: '2025-09-19', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 19, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - September 22, 2025', title: 'Google Meet', date: '2025-09-22', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 22, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - September 27, 2025', title: 'Google Meet', date: '2025-09-27', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 27, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - September 30, 2025', title: 'Google Meet', date: '2025-09-30', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 30, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - October 1, 2025', title: 'CSG Office (F2F)', date: '2025-10-01', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/October 1, 2025 - CSG Office (F2F).pdf'},
+      {id: 'Minutes - October 11, 2025', title: 'Google Meet', date: '2025-10-11', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/October 11, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - October 16, 2025', title: 'Google Meet', date: '2025-10-16', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/October 16, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - November 8, 2025', title: 'Google Meet', date: '2025-11-08', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/November 8, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - November 13, 2025', title: 'Google Meet', date: '2025-11-13', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/November 13, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - November 20, 2025', title: 'SDS Office (F2F)', date: '2025-11-20', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/November 20, 2025 - SDS Office (F2F).pdf'},
+      {id: 'Minutes - November 22, 2025 (Office)', title: 'CSG Office (F2F)', date: '2025-11-22', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/November 22, 2025 - CSG Office (F2F).pdf'},
+      {id: 'Minutes - November 22, 2025 (Online)', title: 'Google Meet', date: '2025-11-22', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/November 22, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - November 29, 2025', title: 'Google Meet', date: '2025-11-29', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/November 29, 2025 - Google Meet.pdf'},
+      {id: 'Minutes - December 6, 2025', title: 'CSG Office (F2F)', date: '2025-12-06', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/December 06, 2025 - CSG Office (F2F).pdf'}
     ],
     officers: {
       executives: [
@@ -79,6 +114,22 @@
       }
     },
     committees: [
+      {name: 'Committee on Creatives', members: [
+        'Zhiro Francisco',
+        'Princess Ugerio',
+        'Abegail Dizon',
+        'Shaine Apin',
+        'Kristian Elmer Dela Torre',
+        'Dominic Loreno',
+        'Reniel Azores',
+        'Samantha Eiriel Ocampo',
+        'Reign Jairus Liwanag',
+        'Sandara Torres',
+        'Christine Joy Malabanan',
+        'Isaac Yzrayelle Sarmiento',
+        'Shaun Russelle Obsenares',
+        'Liam Arrel Libid'
+      ]},
       {name: 'Rules and Internal Affairs Committee', members: [
         'Rica Babes B. Delos Reyes',
         'Craven Mish Lorraine L. Norbe',
@@ -107,8 +158,13 @@
         'Jennifer Nazareno',
         'Ralfh Dharren Molina'
       ]},
-      {name: 'Committee on Creatives', members: []},
-      {name: 'Committee on Student Affairs and Concern', members: []},
+      {name: 'Committee on Student Affairs and Concern', members: [
+        'Rhian Llaneza',
+        'Angel Sais',
+        'Warren Reyes',
+        'Julia Consular',
+        'Joshua Jaba'
+      ]},
       {name: 'Secretariat Committee', members: [
         'Ishra Firreli B. Fernando',
         'Ma. Cristina Hernandez',
@@ -141,9 +197,63 @@
 
   const documentContainers = {};
 
+  function filterDocsByTerm(items, term){
+    if(!term || term === 'all') return items || [];
+    const normalized = term.toLowerCase();
+    return (items || []).filter(it => (it.term || '').toLowerCase() === normalized);
+  }
+
+  function getAvailableTerms(){
+    const terms = new Set();
+    Object.values(documentDataMap).forEach(list => {
+      (list || []).forEach(item => { if(item && item.term) terms.add(item.term); });
+    });
+    return Array.from(terms);
+  }
+
   function el(id){return document.getElementById(id)}
 
   const MAX_DOCS_PER_CATEGORY = 3;
+
+  const TYPE_PREFIXES = {
+    'activity-proposals': 'Activity Proposal',
+    'project-proposals': 'Project Proposal',
+    'minutes': 'Minutes',
+    'office-memorandums': 'Office Memorandum',
+    'accomplishment-reports': 'Accomplishment Report',
+    'financial-statements': 'Financial Statement'
+  };
+
+  function formatDatePretty(dateStr){
+    if(!dateStr) return '';
+    const parts = dateStr.split('-');
+    if(parts.length === 3){
+      const [y, m, d] = parts;
+      const year = parseInt(y, 10);
+      const monthIdx = parseInt(m, 10) - 1;
+      const day = parseInt(d, 10);
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      if(!Number.isNaN(year) && monthIdx >= 0 && monthIdx < 12 && !Number.isNaN(day)){
+        return `${months[monthIdx]} ${day}, ${year}`;
+      }
+    }
+    return dateStr;
+  }
+
+  function formatDisplayId(id, type){
+    if(!id) return '';
+    if(type === 'resolutions') return id;
+    const prefix = TYPE_PREFIXES[type];
+    if(!prefix) return id;
+    const lower = id.toLowerCase();
+    const lowerPrefix = prefix.toLowerCase();
+    if(lower.startsWith(lowerPrefix)){
+      let trimmed = id.slice(prefix.length).trim();
+      if(trimmed.startsWith('-') || trimmed.startsWith('—') || trimmed.startsWith(':')) trimmed = trimmed.slice(1).trim();
+      return trimmed || id;
+    }
+    return id;
+  }
 
   function parseDocNumber(id){
     const matches = (id || '').match(/\d+/g);
@@ -186,19 +296,34 @@
         a.href = 'javascript:void(0)';
         a.classList.add('disabled');
       } else {
-        a.href = file;
+        a.href = file; // allow right-click save/open
+        a.setAttribute('role','button');
         a.addEventListener('click', (e)=>{
-          e.preventDefault();
-          try{ openModal(file, {id: it.id, title: it.title, date: it.date, type: type}); }catch(err){ window.location.href = file; }
+          // Left-click opens modal; right-click/context menu still points to the file href for download
+          if(e && e.button === 0){
+            e.preventDefault();
+            try{ openModal(file, {id: it.id, title: it.title, date: it.date, type: type}); }catch(err){ /* fallback suppressed */ }
+          }
         });
       }
       d.appendChild(a);
       const small = document.createElement('small');
-      const details = [];
-      if(it.id) details.push(it.id);
-      if(it.date) details.push(it.date);
-      if(details.length){
-        small.textContent = details.join(' ');
+      const detailLines = [];
+      const displayId = formatDisplayId(it.id, type);
+      const showDisplayId = type !== 'project-proposals' && type !== 'activity-proposals' && type !== 'minutes';
+      if(showDisplayId && displayId) detailLines.push(displayId);
+      // For minutes, avoid repeating the date both as id and as date; keep only term/date/semester.
+      if(it.term) detailLines.push(it.term);
+      const prettyDate = formatDatePretty(it.date);
+      if(prettyDate) detailLines.push(prettyDate);
+      if(it.semester) detailLines.push(it.semester);
+      if(detailLines.length){
+        small.innerHTML = '';
+        detailLines.forEach(line => {
+          const div = document.createElement('div');
+          div.textContent = line;
+          small.appendChild(div);
+        });
         d.appendChild(small);
       }
       container.appendChild(d);
@@ -210,21 +335,22 @@
       const container = document.getElementById(type);
       if(container) documentContainers[type] = container;
     });
-    renderDocumentsByMode('recent');
+    renderDocumentsByMode('recent', CURRENT_TERM);
   }
 
-  function renderDocumentsByMode(mode){
+  function renderDocumentsByMode(mode, term){
+    const applyTerm = (items)=> filterDocsByTerm(items, term);
     if(mode && mode !== 'recent'){
       const target = documentContainers[mode];
       if(target){
-        const items = documentDataMap[mode] || [];
+        const items = applyTerm(documentDataMap[mode] || []);
         renderList(target, items, mode, Infinity);
       }
       return;
     }
     Object.keys(documentContainers).forEach(type => {
       const container = documentContainers[type];
-      const items = documentDataMap[type] || [];
+      const items = applyTerm(documentDataMap[type] || []);
       renderList(container, items, type, MAX_DOCS_PER_CATEGORY);
     });
   }
@@ -258,22 +384,43 @@
   }
 
   function setupDocumentFilter(){
-    const select = document.getElementById('documents-filter');
+    const typeSelect = document.getElementById('documents-filter');
+    const termSelect = document.getElementById('documents-term');
     const columns = document.querySelectorAll('#documents .doc-col');
     const grid = document.querySelector('#documents .docs-grid');
-    if(!select || !columns.length || !grid) return;
+
+    if(termSelect){
+      const terms = getAvailableTerms();
+      const frag = document.createDocumentFragment();
+      const allOpt = document.createElement('option');
+      allOpt.value = 'all'; allOpt.textContent = 'All terms';
+      frag.appendChild(allOpt);
+      terms.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t; opt.textContent = t; frag.appendChild(opt);
+      });
+      termSelect.innerHTML = '';
+      termSelect.appendChild(frag);
+      if(terms.includes(CURRENT_TERM)) termSelect.value = CURRENT_TERM;
+    }
+
     function applyFilter(){
-      const value = select.value || 'recent';
+      const selectedType = (typeSelect && typeSelect.value) || 'recent';
+      const selectedTerm = (termSelect && termSelect.value) || 'all';
       columns.forEach(col=>{
         const type = col.getAttribute('data-doc-type');
-        const show = value === 'recent' || type === value;
+        const show = selectedType === 'recent' || type === selectedType;
         col.style.display = show ? '' : 'none';
       });
-      renderDocumentsByMode(value);
-      grid.classList.toggle('documents-grid--single', value !== 'recent');
-      updateRecentEmptyState(value, grid);
+      renderDocumentsByMode(selectedType, selectedTerm);
+      if(grid){
+        grid.classList.toggle('documents-grid--single', selectedType !== 'recent');
+        updateRecentEmptyState(selectedType, grid);
+      }
     }
-    select.addEventListener('change', applyFilter);
+
+    if(typeSelect) typeSelect.addEventListener('change', applyFilter);
+    if(termSelect) termSelect.addEventListener('change', applyFilter);
     applyFilter();
   }
 
@@ -793,28 +940,31 @@
     track.className = 'scroll-gallery-track';
     const minItems = 8;
     const repeats = Math.max(2, Math.ceil(minItems / imgs.length));
-    const loop = [];
-    for(let i=0;i<repeats;i++){ loop.push(...imgs); }
-    loop.forEach(src => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'scroll-gallery__item';
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = "Student Leadership Training Program '25";
-      btn.appendChild(img);
-      btn.addEventListener('click', ()=> openPhotoLightbox(src));
-      track.appendChild(btn);
-    });
+    const baseLoop = [];
+    for(let i=0;i<repeats;i++){ baseLoop.push(...imgs); }
+    const duplicateFactor = 2;
+    for(let dup=0; dup<duplicateFactor; dup++){
+      baseLoop.forEach(src => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'scroll-gallery__item';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = "Student Leadership Training Program '25";
+        btn.appendChild(img);
+        btn.addEventListener('click', ()=> openPhotoLightbox(src));
+        track.appendChild(btn);
+      });
+    }
     container.appendChild(track);
-    startGalleryLoop(container, track, loop.length);
+    startGalleryLoop(container, track, duplicateFactor);
   }
 
-  function startGalleryLoop(container, track, totalItems){
+  function startGalleryLoop(container, track, duplicateFactor = 2){
     if(!track || !container) return;
     let offset = 0;
     const speed = 0.35;
-    let loopWidth = track.scrollWidth * (0.5); // half of the duplicated track
+    let loopWidth = track.scrollWidth / (duplicateFactor || 2);
     let rafId = null;
 
     function step(){
@@ -830,7 +980,7 @@
     start();
     container.addEventListener('mouseenter', stop);
     container.addEventListener('mouseleave', start);
-    window.addEventListener('resize', ()=>{ loopWidth = track.scrollWidth * 0.5; });
+    window.addEventListener('resize', ()=>{ loopWidth = track.scrollWidth / (duplicateFactor || 2); });
   }
 
   function buildGallerySrc(folder, entry){

@@ -44,11 +44,11 @@
       {id: 'Activity Proposal - SLTP', title: 'SLTP', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - SLTP.pdf'}
     ],
     projectProposals: [
-      {id: 'Project Proposal - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
-      {id: 'Project Proposal - SLTP Shirt', title: 'SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - SLTP Shirt.pdf'},
-      {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
-      {id: 'Project Proposal - Chat.CSG', title: 'Chat.CSG', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Chat.CSG.pdf'},
-      {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'}
+      {id: 'Project Proposal - Chat.CSG', title: 'Chat.CSG', priority: 4, term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Chat.CSG.pdf'},
+      {id: 'Project Proposal - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', priority: 3, term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
+      {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', priority: 2, term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'},
+      {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', priority: 1, term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
+      {id: 'Project Proposal - SLTP Shirt', title: 'SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - SLTP Shirt.pdf'}
     ],
     minutes: [
       {id: 'Minutes - September 17, 2025', title: 'SDS Office (F2F)', date: '2025-09-17', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 17, 2025 - SDS Office (F2F).pdf'},
@@ -228,7 +228,7 @@
 
   function el(id){return document.getElementById(id)}
 
-  const MAX_DOCS_PER_CATEGORY = 4;
+  const MAX_DOCS_PER_CATEGORY = 3;
 
   const TYPE_PREFIXES = {
     'activity-proposals': 'Activity Proposal',
@@ -279,6 +279,9 @@
 
   function sortDocuments(items){
     return (items || []).slice().sort((a, b)=>{
+      const aPriority = (a && typeof a.priority === 'number') ? a.priority : 0;
+      const bPriority = (b && typeof b.priority === 'number') ? b.priority : 0;
+      if(aPriority !== bPriority) return bPriority - aPriority;
       const aNum = parseDocNumber(a && a.id);
       const bNum = parseDocNumber(b && b.id);
       if(aNum !== bNum) return bNum - aNum;

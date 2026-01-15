@@ -100,13 +100,13 @@
           {name: 'Neal Brian M. Martija', role: 'Vice President for Internal Affairs', photo: 'officer-photos/A.Y.2024-2025/internal.png'},
           {name: 'Vench Kyla C. Ababon', role: 'Vice President for External Affairs', photo: 'officer-photos/A.Y.2024-2025/external.png'},
           {name: 'Ednalyn Kaye B. Hamili', role: 'Secretary', photo: 'officer-photos/A.Y.2024-2025/sec.png'},
-          {name: 'Justine Grace C. Aleman', role: 'Treasurer', photo: 'officer-photos/A.Y.2024-2025/treas.png'},
+          {name: 'Justine Grace C. Aleman', role: 'Treasurer', photo: 'officer-photos/A.Y.2024-2025/Treas.png'},
           {name: 'Jasmine O. Ramos', role: 'Auditor', photo: 'officer-photos/A.Y.2024-2025/auditor.png'},
           {name: 'Marvin E. Apawan', role: 'P.R.O', photo: 'officer-photos/A.Y.2024-2025/pro.png'}
         ],
         boardMembers: [
           {name: 'Allen Malabanan', role: 'SAP Journalism', photo: 'officer-photos/A.Y.2024-2025/journ.png'},
-          {name: 'Chloe O. Regalado', role: 'SAP Office Administration', photo: 'officer-photos/A.Y.2024-2025/ofad.PNG'},
+          {name: 'Chloe O. Regalado', role: 'SAP Office Administration', photo: 'officer-photos/A.Y.2024-2025/ofad.png'},
           {name: 'Johnny S. De Asis Jr.', role: 'SAP Computer Science', photo: 'officer-photos/A.Y.2024-2025/CS.png'},
           {name: 'Sarah Bernalte', role: 'SAP Information Technology', photo: 'officer-photos/A.Y.2024-2025/it.png'},
           {name: 'Hannah Coleen M. Marteriz', role: 'SAP Education', photo: 'officer-photos/A.Y.2024-2025/educ.png'},

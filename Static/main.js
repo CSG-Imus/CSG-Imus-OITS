@@ -36,19 +36,19 @@
       {id: 'Office Memorandum 1', title: '3rd General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 1 - 3rd General Meeting.pdf'}
     ],
     activityProposals: [
+      {id: 'Project Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - Student Hours.pdf'},
+      {id: 'Project Proposal - MASAsagot Mo Ba', title: 'MASAsagot Mo Ba', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - MASAsagot Mo Ba.pdf'},
+      {id: 'Project Proposal - Level-Up Paskuhan', title: 'Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - Level-Up Paskuhan.pdf'},
+      {id: 'Project Proposal - CSG Year-End Party', title: 'CSG Year-End Party', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - CSG Year-End Party.pdf'},
+      {id: 'Project Proposal - PELIKULAYA', title: 'PELIKULAYA', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - PELIKULAYA.pdf'},
       {id: 'Activity Proposal - SLTP', title: 'SLTP', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - SLTP.pdf'}
     ],
     projectProposals: [
       {id: 'Project Proposal - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
-      {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
-      {id: 'Project Proposal - PELIKULAYA', title: 'PELIKULAYA', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - PELIKULAYA.pdf'},
-      {id: 'Project Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Student Hours.pdf'},
       {id: 'Project Proposal - SLTP Shirt', title: 'SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - SLTP Shirt.pdf'},
-      {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'},
+      {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
       {id: 'Project Proposal - Chat.CSG', title: 'Chat.CSG', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Chat.CSG.pdf'},
-      {id: 'Project Proposal - CSG Year-End Party', title: 'CSG Year-End Party', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Year-End Party.pdf'},
-      {id: 'Project Proposal - MASAsagot Mo Ba', title: 'MASAsagot Mo Ba', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - MASAsagot Mo Ba.pdf'},
-      {id: 'Project Proposal - Level-Up Paskuhan', title: 'Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Level-Up Paskuhan.pdf'}
+      {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'}
     ],
     minutes: [
       {id: 'Minutes - September 17, 2025', title: 'SDS Office (F2F)', date: '2025-09-17', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 17, 2025 - SDS Office (F2F).pdf'},
@@ -228,7 +228,7 @@
 
   function el(id){return document.getElementById(id)}
 
-  const MAX_DOCS_PER_CATEGORY = 3;
+  const MAX_DOCS_PER_CATEGORY = 4;
 
   const TYPE_PREFIXES = {
     'activity-proposals': 'Activity Proposal',
@@ -836,53 +836,63 @@
   const eventGallerySets = [
     {
       title: "Oathtaking '25",
-      folder: "Event Gallery Materials/Oathtaking '25",
-      photos: []
+      folder: "Event Gallery Materials/Main Event/Oathtaking '25",
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: "Flag Ceremony '25",
-      folder: "Event Gallery Materials/Flag Ceremony '25",
-      photos: []
+      folder: "Event Gallery Materials/Main Event/Flag Ceremony '25",
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: "Foundation Week '25",
-      folder: "Event Gallery Materials/Foundation Week '25",
-      photos: []
+      folder: "Event Gallery Materials/Main Event/Foundation Week '25",
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: "Student Leadership Training Program '25",
-      folder: 'Event Gallery Materials/SLTP',
-      photos: []
+      folder: 'Event Gallery Materials/Main Event/SLTP',
+      photos: ['IMG_1195.png','IMG_1462.png','IMG_1498.png'],
+      type: 'Main Event'
     },
     {
       title: 'Pande Kape ni Kabusy - Midterms',
-      folder: 'Event Gallery Materials/Pande Kape ni Kabusy - Midterms',
-      photos: []
+      folder: 'Event Gallery Materials/Main Event/Pande Kape ni Kabusy - Midterms',
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: "Paskuhan '25",
-      folder: "Event Gallery Materials/Paskuhan '25",
-      photos: []
+      folder: "Event Gallery Materials/Main Event/Paskuhan '25",
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: "Foundation Week '25 — Highlights",
-      folder: "Event Gallery Materials/Foundation Week '25",
-      photos: []
+      folder: "Event Gallery Materials/Main Event/Foundation Week '25",
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: "Student Hours '25",
-      folder: "Event Gallery Materials/Student Hours '25",
-      photos: []
+      folder: "Event Gallery Materials/Sub Event/Student Hours '25",
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: "Pelikulaya '25",
-      folder: "Event Gallery Materials/Pelikulaya '25",
-      photos: []
+      folder: "Event Gallery Materials/Sub Event/Pelikulaya '25",
+      photos: [],
+      type: 'Main Project'
     },
     {
       title: 'Pande Kape ni Kabsuy - Finals',
-      folder: 'Event Gallery Materials/Pande Kape ni Kabsuy - Finals',
-      photos: []
+      folder: 'Event Gallery Materials/Sub Event/Pande Kape ni Kabsuy - Finals',
+      photos: [],
+      type: 'Main Project'
     }
   ];
 
@@ -1058,6 +1068,13 @@
       title.textContent = label;
       card.dataset.eventTitle = label.toLowerCase();
       header.appendChild(title);
+
+      if(event && event.type){
+        const badge = document.createElement('span');
+        badge.className = 'event-type-badge';
+        badge.textContent = event.type;
+        header.appendChild(badge);
+      }
       card.appendChild(header);
 
       const galleryEl = document.createElement('div');

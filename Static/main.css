@@ -89,6 +89,16 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .event-gallery-card{background:var(--card);border:1px solid rgba(11,18,32,.05);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(11,18,32,0.04)}
 .event-gallery__header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
 .event-gallery__title{margin:0;font-size:1.2rem}
+.event-type-badge{
+	padding:6px 10px;
+	border-radius:999px;
+	font-size:0.78rem;
+	font-weight:700;
+	letter-spacing:0.02em;
+	background:linear-gradient(135deg,#1d8fff, #0a1630);
+	color:#fff;
+	border:1px solid rgba(255,255,255,0.28);
+}
 .event-gallery-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
 .event-gallery-searchbar{max-width:320px;width:100%;margin-left:auto}
 .event-gallery__empty{margin-top:8px;padding:16px;border-radius:12px;border:1px dashed rgba(11,18,32,0.15);text-align:center;color:rgba(11,18,32,0.65);font-weight:600}

@@ -39,16 +39,16 @@
       {id: 'Activity Proposal - SLTP', title: 'SLTP', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - SLTP.pdf'}
     ],
     projectProposals: [
-      {id: 'Project Proposal - Chat.CSG', title: 'Chat.CSG', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Chat.CSG.pdf'},
-      {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'},
-      {id: 'Project Proposal - CSG Year-End Party', title: 'CSG Year-End Party', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Year-End Party.pdf'},
-      {id: 'Project Proposal - Level-Up Paskuhan', title: 'Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Level-Up Paskuhan.pdf'},
-      {id: 'Project Proposal - MASAsagot Mo Ba', title: 'MASAsagot Mo Ba', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - MASAsagot Mo Ba.pdf'},
-      {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
       {id: 'Project Proposal - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
+      {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
       {id: 'Project Proposal - PELIKULAYA', title: 'PELIKULAYA', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - PELIKULAYA.pdf'},
+      {id: 'Project Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Student Hours.pdf'},
       {id: 'Project Proposal - SLTP Shirt', title: 'SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - SLTP Shirt.pdf'},
-      {id: 'Project Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Student Hours.pdf'}
+      {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'},
+      {id: 'Project Proposal - Chat.CSG', title: 'Chat.CSG', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Chat.CSG.pdf'},
+      {id: 'Project Proposal - CSG Year-End Party', title: 'CSG Year-End Party', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Year-End Party.pdf'},
+      {id: 'Project Proposal - MASAsagot Mo Ba', title: 'MASAsagot Mo Ba', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - MASAsagot Mo Ba.pdf'},
+      {id: 'Project Proposal - Level-Up Paskuhan', title: 'Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Level-Up Paskuhan.pdf'}
     ],
     minutes: [
       {id: 'Minutes - September 17, 2025', title: 'SDS Office (F2F)', date: '2025-09-17', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 17, 2025 - SDS Office (F2F).pdf'},
@@ -70,47 +70,55 @@
     ],
     officers: {
       executives: [
-        {name: 'Zoe R. Gil', role: 'President', photo: 'Officer-Photos/pres.png', facebook: 'https://www.facebook.com/share/1BaEa8GUoE/'},
-        {name: 'Ken B. Lentejas', role: 'Vice President for Internal Affairs', photo: 'Officer-Photos/vpi.png', facebook: 'https://www.facebook.com/keyihen.el'},
-        {name: 'John Jefferson M. De Leon', role: 'Vice President for External Affairs', photo: 'Officer-Photos/vpe.png', facebook: 'https://www.facebook.com/jph.mtsdln'},
-        {name: 'Daniel D. Camacláng', role: 'Secretary General', photo: 'Officer-Photos/sec.png', facebook: 'https://www.facebook.com/share/1A7XDawVVp/'},
-        {name: 'Samantha Natalie Fattalo', role: 'Treasurer', photo: 'Officer-Photos/treasurer.png', facebook: 'https://www.facebook.com/share/1EzE9B7gPS/?mibextid=wwXIfr'},
-        {name: 'Cristina V. Domingo', role: 'Auditor', photo: 'Officer-Photos/auditor.png', facebook: 'https://www.facebook.com/tin.cvd'},
-        {name: 'Kenn Harvey F. Brocoy', role: 'Public Relations Officer', photo: 'Officer-Photos/pro.png', facebook: 'https://www.facebook.com/eli.chikenn'}
+        {name: 'Zoe R. Gil', role: 'President', photo: 'officer-photos/current-term/pres.png', facebook: 'https://www.facebook.com/share/1BaEa8GUoE/'},
+        {name: 'Ken B. Lentejas', role: 'Vice President for Internal Affairs', photo: 'officer-photos/current-term/vpi.png', facebook: 'https://www.facebook.com/keyihen.el'},
+        {name: 'John Jefferson M. De Leon', role: 'Vice President for External Affairs', photo: 'officer-photos/current-term/vpe.png', facebook: 'https://www.facebook.com/jph.mtsdln'},
+        {name: 'Daniel D. Camacláng', role: 'Secretary General', photo: 'officer-photos/current-term/sec.png', facebook: 'https://www.facebook.com/share/1A7XDawVVp/'},
+        {name: 'Samantha Natalie Fattalo', role: 'Treasurer', photo: 'officer-photos/current-term/treasurer.png', facebook: 'https://www.facebook.com/share/1EzE9B7gPS/?mibextid=wwXIfr'},
+        {name: 'Cristina V. Domingo', role: 'Auditor', photo: 'officer-photos/current-term/auditor.png', facebook: 'https://www.facebook.com/tin.cvd'},
+        {name: 'Kenn Harvey F. Brocoy', role: 'Public Relations Officer', photo: 'officer-photos/current-term/pro.png', facebook: 'https://www.facebook.com/eli.chikenn'}
       ],
       boardMembers: [
-        {name: 'jimmuel D. Palma', role: 'GAD Representative', photo: 'Officer-Photos/gad.png', facebook: 'https://www.facebook.com/jimmuelpalma'},
-        {name: 'Angela C. Regidor', role: 'SAP Business Administration', photo: 'Officer-Photos/ba.png', facebook: 'https://www.facebook.com/share/1BPRgFhHEU/'},
-        {name: 'Charles Derrick A. Garcia', role: 'SAP Computer Science', photo: 'Officer-Photos/cs.png', facebook: 'https://www.facebook.com/share/1BnreUAh5A/?mibextid=wwXIfr'},
-        {name: 'Juanita Anjela M. Rivas', role: 'SAP Education', photo: 'Officer-Photos/educ.png', facebook: 'https://www.facebook.com/share/16ySQteSWw/?mibextid=LQQJ4d'},
-        {name: 'Mikaella Kathe Palileo', role: 'SAP Entrepreneurship', photo: 'Officer-Photos/entrep.png', facebook: 'https://www.facebook.com/share/1Cv4q431YZ/'},
-        {name: 'Misael A. Ponferrada', role: 'SAP Hospitality Management', photo: 'Officer-Photos/hm.png', facebook: 'https://www.facebook.com/share/14Pcg263Z2i/'},
-        {name: 'Ivan P. Duran', role: 'SAP Information Technology', photo: 'Officer-Photos/SAP.gif', facebook: 'https://www.facebook.com/infectious.ivan/'},
-        {name: 'Chris John Labalan', role: 'SAP Journalism', photo: 'Officer-Photos/journ.png', facebook: 'https://www.facebook.com/share/1N69TcWjQk/'},
-        {name: 'Lorie P. Salude', role: 'SAP Office Administration', photo: 'Officer-Photos/OFAD.png', facebook: 'https://www.facebook.com/share/17XB2CYAQp/'},
-        {name: 'Mary Eunice D. Ramos', role: 'SAP Psychology', photo: 'Officer-Photos/Psych.png', facebook: 'https://www.facebook.com/merie.ramos.9'}
+        {name: 'jimmuel D. Palma', role: 'GAD Representative', photo: 'officer-photos/current-term/gad.png', facebook: 'https://www.facebook.com/jimmuelpalma'},
+        {name: 'Angela C. Regidor', role: 'SAP Business Administration', photo: 'officer-photos/current-term/ba.png', facebook: 'https://www.facebook.com/share/1BPRgFhHEU/'},
+        {name: 'Charles Derrick A. Garcia', role: 'SAP Computer Science', photo: 'officer-photos/current-term/cs.png', facebook: 'https://www.facebook.com/share/1BnreUAh5A/?mibextid=wwXIfr'},
+        {name: 'Juanita Anjela M. Rivas', role: 'SAP Education', photo: 'officer-photos/current-term/educ.png', facebook: 'https://www.facebook.com/share/16ySQteSWw/?mibextid=LQQJ4d'},
+        {name: 'Mikaella Kathe Palileo', role: 'SAP Entrepreneurship', photo: 'officer-photos/current-term/entrep.png', facebook: 'https://www.facebook.com/share/1Cv4q431YZ/'},
+        {name: 'Misael A. Ponferrada', role: 'SAP Hospitality Management', photo: 'officer-photos/current-term/hm.png', facebook: 'https://www.facebook.com/share/14Pcg263Z2i/'},
+        {name: 'Ivan P. Duran', role: 'SAP Information Technology', photo: 'officer-photos/current-term/SAP.gif', facebook: 'https://www.facebook.com/infectious.ivan/'},
+        {name: 'Chris John Labalan', role: 'SAP Journalism', photo: 'officer-photos/current-term/journ.png', facebook: 'https://www.facebook.com/share/1N69TcWjQk/'},
+        {name: 'Lorie P. Salude', role: 'SAP Office Administration', photo: 'officer-photos/current-term/OFAD.png', facebook: 'https://www.facebook.com/share/17XB2CYAQp/'},
+        {name: 'Mary Eunice D. Ramos', role: 'SAP Psychology', photo: 'officer-photos/current-term/Psych.png', facebook: 'https://www.facebook.com/merie.ramos.9'}
+      ],
+      advisers: [
+        {name: 'Jenny Danica P. Abayari, MAEd', role: 'Adviser', photo: 'officer-photos/A.Y.2024-2025/adviser-jen.png'},
+        {name: 'Alfe M. Solina, DBA', role: 'Adviser', photo: 'CSG.png'}
       ],
       last: {
         executives: [
-          {name: 'Rica Babes B. Delos Reyes', role: 'President', photo: 'CSG.png'},
-          {name: 'Neal Brian M. Martija', role: 'Vice President for Internal Affairs', photo: 'CSG.png'},
-          {name: 'Vench Kyla C. Ababon', role: 'Vice President for External Affairs', photo: 'CSG.png'},
-          {name: 'Ednalyn Kaye B. Hamili', role: 'Secretary', photo: 'CSG.png'},
-          {name: 'Justine Grace C. Aleman', role: 'Treasurer', photo: 'CSG.png'},
-          {name: 'Jasmine O. Ramos', role: 'Auditor', photo: 'CSG.png'},
-          {name: 'Marvin E. Apawan', role: 'P.R.O', photo: 'CSG.png'}
+          {name: 'Rica Babes B. Delos Reyes', role: 'President', photo: 'officer-photos/A.Y.2024-2025/pres.png'},
+          {name: 'Neal Brian M. Martija', role: 'Vice President for Internal Affairs', photo: 'officer-photos/A.Y.2024-2025/internal.png'},
+          {name: 'Vench Kyla C. Ababon', role: 'Vice President for External Affairs', photo: 'officer-photos/A.Y.2024-2025/external.png'},
+          {name: 'Ednalyn Kaye B. Hamili', role: 'Secretary', photo: 'officer-photos/A.Y.2024-2025/sec.png'},
+          {name: 'Justine Grace C. Aleman', role: 'Treasurer', photo: 'officer-photos/A.Y.2024-2025/treas.png'},
+          {name: 'Jasmine O. Ramos', role: 'Auditor', photo: 'officer-photos/A.Y.2024-2025/auditor.png'},
+          {name: 'Marvin E. Apawan', role: 'P.R.O', photo: 'officer-photos/A.Y.2024-2025/pro.png'}
         ],
         boardMembers: [
-          {name: 'Allen Malabanan', role: 'SAP Journalism', photo: 'CSG.png'},
-          {name: 'Chloe O. Regalado', role: 'SAP BSOA', photo: 'CSG.png'},
-          {name: 'Johnny S. De Asis Jr.', role: 'SAP Computer Science', photo: 'CSG.png'},
-          {name: 'Sarah Bernalte', role: 'SAP Information Technology', photo: 'CSG.png'},
-          {name: 'Hannah Coleen M. Marteriz', role: 'SAP Education', photo: 'CSG.png'},
-          {name: 'Ma. Nicole E. Valenzuela', role: 'SAP Business Administration', photo: 'CSG.png'},
-          {name: 'Hans Christian O. Ancierto', role: 'SAP Psychology', photo: 'CSG.png'},
-          {name: 'Mary Carmelemn H. Catoltol', role: 'SAP Hospitality Management', photo: 'CSG.png'},
-          {name: 'Jhomari Kenshin P. Sarte', role: 'SAP Entrepreneurship', photo: 'CSG.png'}
-        ]
+          {name: 'Allen Malabanan', role: 'SAP Journalism', photo: 'officer-photos/A.Y.2024-2025/journ.png'},
+          {name: 'Chloe O. Regalado', role: 'SAP Office Administration', photo: 'officer-photos/A.Y.2024-2025/ofad.PNG'},
+          {name: 'Johnny S. De Asis Jr.', role: 'SAP Computer Science', photo: 'officer-photos/A.Y.2024-2025/CS.png'},
+          {name: 'Sarah Bernalte', role: 'SAP Information Technology', photo: 'officer-photos/A.Y.2024-2025/it.png'},
+          {name: 'Hannah Coleen M. Marteriz', role: 'SAP Education', photo: 'officer-photos/A.Y.2024-2025/educ.png'},
+          {name: 'Ma. Nicole E. Valenzuela', role: 'SAP Business Administration', photo: 'officer-photos/A.Y.2024-2025/ba.png'},
+          {name: 'Hans Christian O. Ancierto', role: 'SAP Psychology', photo: 'officer-photos/A.Y.2024-2025/psych.png'},
+          {name: 'Mary Carmelemn H. Catoltol', role: 'SAP Hospitality Management', photo: 'officer-photos/A.Y.2024-2025/hm.png'},
+          {name: 'Jhomari Kenshin P. Sarte', role: 'SAP Entrepreneurship', photo: 'officer-photos/A.Y.2024-2025/entrep.png'}
+          ],
+          advisers: [
+            {name: 'Rhoel Joseph R. Sarino, MIT', role: 'Adviser', photo: 'officer-photos/A.Y.2024-2025/adviser-rhoel.png'},
+            {name: 'Jenny Danica P. Abayari, MAEd', role: 'Adviser', photo: 'officer-photos/A.Y.2024-2025/adviser-jen.png'}
+          ]
       }
     },
     committees: [
@@ -157,6 +165,13 @@
       {name: 'Social and Environmental Awareness Committee', members: [
         'Jennifer Nazareno',
         'Ralfh Dharren Molina'
+      ]},
+      {name: 'Commission on Audit (COA)', members: [
+        'Jason T. Pagal',
+        'Raine Kristea Candiz Maxine M. Cerro',
+        'Matt Froy Davis C. Parilla',
+        'Jhomari Kenshin P. Sarte',
+        'Ericka Ann P. Palatino'
       ]},
       {name: 'Committee on Student Affairs and Concern', members: [
         'Rhian Llaneza',
@@ -442,7 +457,15 @@
   function renderOfficers(container, list){
     if(!container) return;
     container.innerHTML = '';
-    list.forEach(o=>{
+    const items = Array.isArray(list) ? list : [];
+    if(!items.length){
+      const empty = document.createElement('div');
+      empty.className = 'officer officer--placeholder';
+      empty.textContent = 'No officers listed yet.';
+      container.appendChild(empty);
+      return;
+    }
+    items.forEach(o=>{
       const d = document.createElement('div');
       d.className = 'officer';
       const photo = o.photo || 'CSG.png';
@@ -761,6 +784,7 @@
     initializeDocumentSections();
     renderOfficers(el('executives'), data.officers.executives);
     renderOfficers(el('board-members'), data.officers.boardMembers);
+    renderOfficers(el('advisers'), data.officers.advisers);
     // render committees as dropdown cards (placed under Board Members on the Officers page)
     renderCommittees(el('committees-list-officers'), data.committees);
     // also render on the standalone Committees page (if present)
@@ -768,6 +792,7 @@
     // Render last term executives and board members separately
     renderOfficers(el('last-executives'), data.officers.last && data.officers.last.executives);
     renderOfficers(el('last-board-members'), data.officers.last && data.officers.last.boardMembers);
+    renderOfficers(el('last-advisers'), data.officers.last && data.officers.last.advisers);
 
     const navToggle = el('nav-toggle');
     const mainNav = document.querySelector('.sidebar .main-nav');
@@ -797,16 +822,8 @@
     setupEventGallerySearch(el('eventGallerySearch'), eventGalleryContainer);
     // Populate About page galleries (current officers + events) using simple sliders
     try{
-      const aboutOfficersEl = el('about-current-officers');
-      const aboutEventsEl = el('about-events-gallery');
-      // Use the term tagline image (pics/tagline.png) for the Term Tagline slider.
-      // Fallback to officer photos if the tagline image is missing.
-      const taglinePath = 'pics/tagline.png';
-      const currentOfficers = [].concat(data.officers.executives || []).concat(data.officers.boardMembers || []);
-      const officerPhotos = currentOfficers.map(o=> o && o.photo ? o.photo : 'CSG.png');
-      // Use the tagline image only for the Term Tagline slider (do not cycle officer photos)
-      initAboutSlider(aboutOfficersEl, [taglinePath], { interval: 3800, caption: 'Term Tagline' });
-      initAboutSlider(aboutEventsEl, dashboardPhotos, { interval: 3000, caption: 'Events & Activities' });
+      const taglineImg = document.querySelector('.about-tagline img');
+      if(taglineImg){ taglineImg.src = 'tagline.png'; }
     }catch(e){/* ignore if about page not present */}
 
     const photoLightboxClose = el('photoLightboxClose');
@@ -818,13 +835,28 @@
   const dashboardPhotos = [ 'Dashboard-Photos/IMG_1195.png', 'Dashboard-Photos/IMG_1462.png', 'Dashboard-Photos/IMG_1498.png' ];
   const eventGallerySets = [
     {
+      title: "Oathtaking '25",
+      folder: "Event Gallery Materials/Oathtaking '25",
+      photos: []
+    },
+    {
+      title: "Flag Ceremony '25",
+      folder: "Event Gallery Materials/Flag Ceremony '25",
+      photos: []
+    },
+    {
       title: "Foundation Week '25",
       folder: "Event Gallery Materials/Foundation Week '25",
       photos: []
     },
     {
-      title: 'Pande Kape ni Kabsuy - 1st Semester',
-      folder: 'Event Gallery Materials/Pande Kape ni Kabsuy - 1st Semester',
+      title: "Student Leadership Training Program '25",
+      folder: 'Event Gallery Materials/SLTP',
+      photos: []
+    },
+    {
+      title: 'Pande Kape ni Kabusy - Midterms',
+      folder: 'Event Gallery Materials/Pande Kape ni Kabusy - Midterms',
       photos: []
     },
     {
@@ -833,9 +865,24 @@
       photos: []
     },
     {
-      title: "Student Leadership Training Program '25",
-      folder: 'Event Gallery Materials/SLTP',
-      photos: ['IMG_1195.png','IMG_1462.png','IMG_1498.png']
+      title: "Foundation Week '25 — Highlights",
+      folder: "Event Gallery Materials/Foundation Week '25",
+      photos: []
+    },
+    {
+      title: "Student Hours '25",
+      folder: "Event Gallery Materials/Student Hours '25",
+      photos: []
+    },
+    {
+      title: "Pelikulaya '25",
+      folder: "Event Gallery Materials/Pelikulaya '25",
+      photos: []
+    },
+    {
+      title: 'Pande Kape ni Kabsuy - Finals',
+      folder: 'Event Gallery Materials/Pande Kape ni Kabsuy - Finals',
+      photos: []
     }
   ];
 

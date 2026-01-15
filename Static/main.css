@@ -1,9 +1,9 @@
 :root{
-	--bg: #ffffff;
-	--muted: #f4f6f8;
-	--text: #0b1220;
-	/* single accent color — change this value to update site accent globally */
-	--accent: #0b73ff;
+	/* Light blue primary, white secondary */
+	--bg: #eaf4ff;
+	--muted: #dbeafe;
+	--text: #0a1630;
+	--accent: #1d8fff;
 	--card: #ffffff;
 }
 
@@ -13,7 +13,7 @@ body{
 	margin:0;
 	font-family: Arial, Helvetica, sans-serif;
 	color:var(--text);
-	background:var(--bg);
+	background:linear-gradient(180deg,var(--bg),#ffffff 18%, var(--bg));
 	-webkit-font-smoothing:antialiased;
 	min-height:100vh;
 	display:flex;
@@ -33,7 +33,7 @@ body{
 .main-nav a.active{background:var(--muted)}
 
 /* Sidebar layout */
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;padding:28px 14px;background:var(--muted);border-right:1px solid rgba(11,18,32,.04);display:flex;flex-direction:column;gap:8px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;padding:28px 14px;background:linear-gradient(180deg,var(--muted),#e0f2ff);border-right:1px solid rgba(11,18,32,.08);display:flex;flex-direction:column;gap:8px}
 .sidebar .brand{font-weight:700;margin-bottom:6px;display:block;font-size:0.9rem;text-align:center}
 .sidebar .sidebar-top{display:flex;align-items:center;gap:12px;margin-bottom:6px}
 .sidebar .logo{width:48px;height:48px;flex:0 0 48px;border-radius:6px}
@@ -61,6 +61,17 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .card{display:inline-block;padding:14px 18px;border-radius:8px;background:var(--card);text-decoration:none;color:var(--text);border:2px solid rgba(11,18,32,.1);transition:transform 0.2s ease, box-shadow 0.2s ease;box-shadow:0 4px 10px rgba(11,18,32,0.04)}
 .card:hover{transform:scale(1.05);box-shadow:0 6px 18px rgba(11,18,32,0.08)}
 .card:active{transform:scale(0.95)}
+
+.about-tagline{display:flex;justify-content:center;margin-top:16px}
+.about-tagline__inner{
+	padding:16px 24px;
+	border-radius:16px;
+	background:rgba(10,22,48,0.88);
+	backdrop-filter:blur(12px);
+	-webkit-backdrop-filter:blur(12px);
+	box-shadow:0 14px 36px rgba(10,22,48,0.3);
+}
+.about-tagline__img{max-width:380px;width:100%;height:auto;display:block;filter:drop-shadow(0 6px 12px rgba(11,18,32,0.22))}
 
 /* hero content helpers */
 .hero--simple .lead{max-width:52ch;font-size:1rem}

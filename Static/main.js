@@ -822,7 +822,9 @@
     initAboutPhotoCard(); setupDocumentSearch(); setupDocumentFilter(); initPdfZoomControls();
     const eventGalleryContainer = el('events-gallery-list');
     renderEventGalleries(eventGalleryContainer, eventGallerySets);
-    setupEventGallerySearch(el('eventGallerySearch'), eventGalleryContainer);
+    const eventTypeFilter = el('eventGalleryType');
+    populateEventTypeFilter(eventTypeFilter, eventGallerySets);
+    setupEventGalleryFilters(el('eventGallerySearch'), eventTypeFilter, eventGalleryContainer);
     // Populate About page galleries (current officers + events) using simple sliders
     try{
       const taglineImg = document.querySelector('.about-tagline img');
@@ -841,19 +843,13 @@
       title: "Oathtaking '25",
       folder: "Event Gallery Materials/Main Event/Oathtaking '25",
       photos: [],
-      type: 'Main Project'
+      type: 'Main Event'
     },
     {
       title: "Flag Ceremony '25",
       folder: "Event Gallery Materials/Main Event/Flag Ceremony '25",
       photos: [],
-      type: 'Main Project'
-    },
-    {
-      title: "Foundation Week '25",
-      folder: "Event Gallery Materials/Main Event/Foundation Week '25",
-      photos: [],
-      type: 'Main Project'
+      type: 'Main Event'
     },
     {
       title: "Student Leadership Training Program '25",
@@ -870,12 +866,6 @@
     {
       title: "Paskuhan '25",
       folder: "Event Gallery Materials/Main Event/Paskuhan '25",
-      photos: [],
-      type: 'Main Project'
-    },
-    {
-      title: "Foundation Week '25 — Highlights",
-      folder: "Event Gallery Materials/Main Event/Foundation Week '25",
       photos: [],
       type: 'Main Project'
     },
@@ -1062,6 +1052,7 @@
     events.forEach((event, idx)=>{
       const card = document.createElement('div');
       card.className = 'event-gallery-card';
+      card.dataset.eventType = (event && event.type ? event.type : '').toLowerCase();
 
       const header = document.createElement('div');
       header.className = 'event-gallery__header';
@@ -1091,21 +1082,41 @@
     });
     const empty = document.createElement('div');
     empty.className = 'event-gallery__empty';
-    empty.textContent = 'No events match your search.';
+    empty.textContent = 'No events match your filters.';
     empty.hidden = true;
     container.appendChild(empty);
     container._eventCards = cards;
     container._eventEmptyState = empty;
   }
 
-  function setupEventGallerySearch(input, container){
-    if(!input || !container) return;
+  function populateEventTypeFilter(select, events){
+    if(!select) return;
+    const types = Array.from(new Set((events || []).map(ev => (ev && ev.type ? ev.type.trim() : '')).filter(Boolean)));
+    select.innerHTML = '';
+    const allOpt = document.createElement('option');
+    allOpt.value = 'all';
+    allOpt.textContent = 'All types';
+    select.appendChild(allOpt);
+    types.forEach(type => {
+      const opt = document.createElement('option');
+      opt.value = type.toLowerCase();
+      opt.textContent = type;
+      select.appendChild(opt);
+    });
+  }
+
+  function setupEventGalleryFilters(input, select, container){
+    if(!container) return;
     const applyFilter = ()=>{
-      const term = (input.value || '').trim().toLowerCase();
+      const term = (input && input.value || '').trim().toLowerCase();
+      const type = (select && select.value) ? select.value.toLowerCase() : 'all';
       let visibleCount = 0;
       (container._eventCards || []).forEach(card => {
         const title = card.dataset.eventTitle || '';
-        const matches = !term || title.includes(term);
+        const eventType = card.dataset.eventType || '';
+        const matchesTerm = !term || title.includes(term);
+        const matchesType = type === 'all' || eventType === type;
+        const matches = matchesTerm && matchesType;
         card.style.display = matches ? '' : 'none';
         if(matches) visibleCount++;
       });
@@ -1113,7 +1124,8 @@
         container._eventEmptyState.hidden = visibleCount !== 0;
       }
     };
-    input.addEventListener('input', applyFilter);
+    if(input) input.addEventListener('input', applyFilter);
+    if(select) select.addEventListener('change', applyFilter);
     applyFilter();
   }
 

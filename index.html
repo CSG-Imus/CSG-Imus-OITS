@@ -37,7 +37,7 @@
                 <div class="hero hero--simple">
                     <div class="hero-content">
                         <h2 class="hero-title">Transparency Hub</h2>
-                        <p class="lead">Explore official records, resolutions, project plans, reports, and the Event Gallery showcasing every Central Student Government — Imus Campus milestone.</p>
+                        <p class="lead">Explore official records, resolutions, project plans, and reports, then dive into the Event Gallery that chronicles every milestone of the Central Student Government — Imus Campus, from proposals to celebrations.</p>
                         <div class="quick-links">
                             <a href="https://www.facebook.com/CSGImus" class="card" target="_blank" rel="noopener">Visit Facebook Page</a>
                         </div>
@@ -45,6 +45,16 @@
                     <div class="hero-media" aria-hidden="true">
                         <img src="CSG.png" alt="Central Student Government logo" loading="lazy" />
                     </div>
+                </div>
+                <div class="hero-cta-grid">
+                    <a class="hero-cta-card" href="#documents">
+                        <h3>Documents</h3>
+                        <p>Jump to resolutions, proposals, and minutes.</p>
+                    </a>
+                    <a class="hero-cta-card" href="#events">
+                        <h3>Event Gallery</h3>
+                        <p>Browse photos and highlights from CSG events.</p>
+                    </a>
                 </div>
             </section>
 
@@ -148,24 +158,39 @@
             <section id="about" class="page" hidden>
                 <h2>About CSG</h2>
                 <div class="about-text">
-                    <p>The Central Student Government (CSG) — Imus Campus represents the student voice and leads campus initiatives that promote student welfare, campus life, and transparent governance. The CSG plans and executes projects, maintains records of resolutions and minutes, and collaborates with campus stakeholders to ensure student interests are represented. Our work focuses on accountability, inclusivity, and service to the student body.</p>
+                    <p>The Central Student Government (CSG) — Imus Campus is here to listen, serve, and make sure every student is seen. We build programs that strengthen campus life and student welfare, keep clear records of our work, and partner with campus offices so your needs are heard. Everything we do is anchored on accountability, inclusivity, and genuine service to the student body.</p>
 
                     <div class="about-tagline">
-                        <div class="about-tagline__inner">
-                            <img class="about-tagline__img" src="tagline.png" alt="CSG Term Tagline">
+                        <div class="about-tagline__inner" aria-label="CSG Term Tagline">
+                            <div class="about-tagline__face about-tagline__face--front">
+                                <img class="about-tagline__img" src="tagline.png" alt="CSG Term Tagline">
+                            </div>
+                            <div class="about-tagline__face about-tagline__face--back">
+                                <img class="about-tagline__img" src="CSG.png" alt="CSG placeholder art">
+                            </div>
                         </div>
                     </div>
+
+                    <p><strong>Para sa Kabsuhenyos, Puso ang magiging sentro ng serbisyo.</strong> PUSO is more than a slogan—it is the posture we choose every day. With heart at the center, we speak with kindness to understand concerns, lend help quickly when needs arise, and listen deeply so we can serve better. A heart to serve means we communicate more openly, help more consistently, understand more fully, and do more for our constituents because every action is guided by genuine care for Kabsuhenyos.</p>
                 </div>
             </section>
 
             <section id="events" class="page" hidden>
                 <div class="event-gallery-header">
                     <h2>Event Gallery</h2>
-                    <div class="documents-searchbar event-gallery-searchbar" role="search">
-                        <svg class="documents-searchbar__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path d="M15.5 14h-.79l-.28-.27a6 6 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor" />
-                        </svg>
-                        <input id="eventGallerySearch" class="documents-search-input" type="search" placeholder="Search events" aria-label="Search events" />
+                    <div class="event-gallery-filters">
+                        <div class="documents-searchbar event-gallery-searchbar" role="search">
+                            <svg class="documents-searchbar__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M15.5 14h-.79l-.28-.27a6 6 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="currentColor" />
+                            </svg>
+                            <input id="eventGallerySearch" class="documents-search-input" type="search" placeholder="Search events" aria-label="Search events" />
+                        </div>
+                        <label class="documents-filter event-gallery-filter" for="eventGalleryType">
+                            <span class="documents-filter__label">Type</span>
+                            <select id="eventGalleryType" class="documents-filter__select" aria-label="Filter events by type">
+                                <option value="all">All types</option>
+                            </select>
+                        </label>
                     </div>
                 </div>
                 <div id="events-gallery-list" class="event-gallery-list"></div>

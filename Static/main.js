@@ -167,7 +167,7 @@
         'Jennifer Nazareno',
         'Ralfh Dharren Molina'
       ]},
-      {name: 'Commission on Audit (COA)', members: [
+      {name: 'Committee on Finance and Audit (COA)', members: [
         'Jason T. Pagal',
         'Raine Kristea Candiz Maxine M. Cerro',
         'Matt Froy Davis C. Parilla',

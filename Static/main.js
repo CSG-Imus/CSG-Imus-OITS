@@ -9,6 +9,7 @@
   const CURRENT_SEMESTER = '1st Semester';
   let _pdfZoom = PDF_ZOOM_DEFAULT;
   let _pdfSource = null;
+  const _galleryLoops = [];
   const data = {
     resolutions: [
       {id: 'Resolution 1', title: 'Temporary Assumption of Financial Responsibilities', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 1 - Temporary Assumption of Financial Responsibilities.pdf'},
@@ -79,7 +80,7 @@
         {name: 'Kenn Harvey F. Brocoy', role: 'Public Relations Officer', photo: 'officer-photos/current-term/pro.png', facebook: 'https://www.facebook.com/eli.chikenn'}
       ],
       boardMembers: [
-        {name: 'jimmuel D. Palma', role: 'GAD Representative', photo: 'officer-photos/current-term/gad.png', facebook: 'https://www.facebook.com/jimmuelpalma'},
+        {name: 'Jimmuel D. Palma', role: 'GAD Representative', photo: 'officer-photos/current-term/gad.png', facebook: 'https://www.facebook.com/jimmuelpalma'},
         {name: 'Angela C. Regidor', role: 'SAP Business Administration', photo: 'officer-photos/current-term/ba.png', facebook: 'https://www.facebook.com/share/1BPRgFhHEU/'},
         {name: 'Charles Derrick A. Garcia', role: 'SAP Computer Science', photo: 'officer-photos/current-term/cs.png', facebook: 'https://www.facebook.com/share/1BnreUAh5A/?mibextid=wwXIfr'},
         {name: 'Juanita Anjela M. Rivas', role: 'SAP Education', photo: 'officer-photos/current-term/educ.png', facebook: 'https://www.facebook.com/share/16ySQteSWw/?mibextid=LQQJ4d'},
@@ -239,6 +240,39 @@
     'financial-statements': 'Financial Statement'
   };
 
+  const SEARCH_ALIASES = [
+    {phrase: 'student leadership training program', aliases: ['sltp', "sltp '25", 'sltp25']},
+    {phrase: 'pande kape ni kabsuy', aliases: ['pk', 'pk nk', 'pknk', 'kabsuy', 'pande kape']}
+  ];
+
+  function deriveAcronym(str){
+    const parts = (str || '').match(/[A-Za-z0-9]+/g) || [];
+    if(!parts.length) return '';
+    const acronym = parts.map(p => p[0]).join('');
+    return acronym.length >= 2 ? acronym.toLowerCase() : '';
+  }
+
+  function buildSearchText(...parts){
+    const tokens = new Set();
+    const normalizedParts = [];
+    parts.forEach(part => {
+      if(!part) return;
+      const lower = String(part).toLowerCase();
+      normalizedParts.push(lower);
+      tokens.add(lower);
+      const acronym = deriveAcronym(part);
+      if(acronym) tokens.add(acronym);
+    });
+    const combined = normalizedParts.join(' ');
+    SEARCH_ALIASES.forEach(entry => {
+      if(!entry || !entry.phrase || !Array.isArray(entry.aliases)) return;
+      if(combined.includes(entry.phrase)){
+        entry.aliases.forEach(alias => { if(alias) tokens.add(alias.toLowerCase()); });
+      }
+    });
+    return Array.from(tokens).filter(Boolean).join(' ');
+  }
+
   function formatDatePretty(dateStr){
     if(!dateStr) return '';
     const parts = dateStr.split('-');
@@ -307,6 +341,7 @@
       d.className = 'doc';
       d.setAttribute('data-title', (it.title || '').toLowerCase());
       d.setAttribute('data-id', (it.id || '').toLowerCase());
+      d.setAttribute('data-search', buildSearchText(it.title, it.id, it.term, it.semester, type));
       const a = document.createElement('a');
       a.textContent = it.title || 'Untitled';
       const file = it.file || '#';
@@ -381,9 +416,9 @@
       const docs = document.querySelectorAll('#documents .doc');
       let anyVisible = false;
       docs.forEach(d=>{
-        const title = d.getAttribute('data-title') || '';
-        const id = d.getAttribute('data-id') || '';
-        const matches = !q || title.includes(q) || id.includes(q);
+        const corpus = d.getAttribute('data-search') || '';
+        const terms = q ? q.split(/\s+/).filter(Boolean) : [];
+        const matches = !terms.length || terms.every(term => corpus.includes(term));
         d.style.display = matches ? '' : 'none';
         if(matches) anyVisible = true;
       });
@@ -852,7 +887,7 @@
       type: 'Main Event'
     },
     {
-      title: "Student Leadership Training Program '25",
+      title: "Student Leadership Training Program (SLTP) '25",
       folder: 'Event Gallery Materials/Main Event/SLTP',
       photos: ['IMG_1195.png','IMG_1462.png','IMG_1498.png'],
       type: 'Main Event'
@@ -873,19 +908,19 @@
       title: "Student Hours '25",
       folder: "Event Gallery Materials/Sub Event/Student Hours '25",
       photos: [],
-      type: 'Main Project'
+      type: 'Sub Event'
     },
     {
       title: "Pelikulaya '25",
       folder: "Event Gallery Materials/Sub Event/Pelikulaya '25",
       photos: [],
-      type: 'Main Project'
+      type: 'Sub Event'
     },
     {
       title: 'Pande Kape ni Kabsuy - Finals',
       folder: 'Event Gallery Materials/Sub Event/Pande Kape ni Kabsuy - Finals',
       photos: [],
-      type: 'Main Project'
+      type: 'Sub Event'
     }
   ];
 
@@ -1031,7 +1066,11 @@
     container.addEventListener('mouseenter', stop);
     container.addEventListener('mouseleave', start);
     window.addEventListener('resize', ()=>{ loopWidth = track.scrollWidth / (duplicateFactor || 2); });
+    const controls = {start, stop};
+    _galleryLoops.push(controls);
+    return controls;
   }
+
 
   function buildGallerySrc(folder, entry){
     const sanitize = (value)=> (value || '').replace(/\\/g,'/').split('/').filter(Boolean);
@@ -1135,6 +1174,7 @@
     if(!modal || !img) return;
     img.src = src || 'CSG.png';
     modal.hidden = false;
+    _galleryLoops.forEach(ctrl => { try{ ctrl.stop(); }catch(e){} });
   }
 
   function closePhotoLightbox(){
@@ -1143,5 +1183,6 @@
     const img = document.getElementById('photoLightboxImage');
     if(img) img.src = '';
     modal.hidden = true;
+    _galleryLoops.forEach(ctrl => { try{ ctrl.start(); }catch(e){} });
   }
 })();

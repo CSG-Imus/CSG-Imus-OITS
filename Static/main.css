@@ -83,9 +83,6 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 .hero-cta-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(10,22,48,0.24)}
 
 .about-tagline{display:flex;justify-content:center;margin-top:16px}
-.about-tagline{
-	perspective:1000px;
-}
 .about-tagline__inner{
 	position:relative;
 	width:100%;
@@ -93,14 +90,11 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 	height:260px;
 	padding:0;
 	border-radius:16px;
-	background:linear-gradient(135deg,#8bb8f0 0%, #5c97dc 52%, #3a6ead 100%);
+	background:#0a1630;
 	border:1px solid rgba(255,255,255,0.18);
 	box-shadow:0 10px 22px rgba(10,22,48,0.18);
-	transform-style:preserve-3d;
-	transition:transform 0.65s ease;
 	overflow:hidden;
 }
-.about-tagline:hover .about-tagline__inner{transform:rotateY(180deg)}
 .about-tagline__face{
 	position:absolute;
 	inset:0;
@@ -109,16 +103,19 @@ select#palette{padding:6px;border-radius:6px;border:1px solid rgba(11,18,32,.08)
 	align-items:center;
 	justify-content:center;
 	border-radius:16px;
-	backface-visibility:hidden;
-	-webkit-backface-visibility:hidden;
-	transform-style:preserve-3d;
 }
-.about-tagline__face--front{transform:rotateY(0deg);z-index:2;opacity:1;transition:opacity 0.45s ease}
-.about-tagline__face--back{transform:rotateY(180deg);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;opacity:0;transition:opacity 0.45s ease}
-.about-tagline__img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 12px rgba(11,18,32,0.22))}
-.about-tagline:hover .about-tagline__face--front{opacity:0}
-.about-tagline:hover .about-tagline__face--back{opacity:1}
-.about-tagline__face--back .about-tagline__img{transform:rotateY(180deg)}
+.about-tagline__face--front{
+	z-index:2;
+	opacity:1;
+	background:linear-gradient(135deg,rgba(10,22,48,0.78),rgba(10,22,48,0.50));
+	color:#fff;
+}
+.about-tagline__face--back{
+	opacity:1;
+	z-index:1;
+	padding:0;
+}
+.about-tagline__img{width:100%;height:100%;object-fit:cover;display:block;filter:drop-shadow(0 6px 12px rgba(11,18,32,0.12))}
 
 /* hero content helpers */
 .hero--simple .lead{max-width:52ch;font-size:1rem}

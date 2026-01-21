@@ -311,6 +311,8 @@
 
   function formatDisplayId(id, type){
     if(!id) return '';
+    // Keep full label for office memorandums so the prefix shows (e.g., "Office Memorandum 17").
+    if(type === 'office-memorandums') return id;
     if(type === 'resolutions') return id;
     const prefix = TYPE_PREFIXES[type];
     if(!prefix) return id;

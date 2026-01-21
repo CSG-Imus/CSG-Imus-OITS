@@ -167,18 +167,20 @@
         'Jennifer Nazareno',
         'Ralfh Dharren Molina'
       ]},
-      {name: 'Committee on Finance and Audit (COA)', members: [
-        'Jason T. Pagal',
-        'Raine Kristea Candiz Maxine M. Cerro',
-        'Matt Froy Davis C. Parilla',
-        'Jhomari Kenshin P. Sarte',
-        'Ericka Ann P. Palatino',
+      {name: 'Committee on Finance', members: [
         'Arjeff Tejero',
         'Jasmine Ramos',
         'Vhilroi Allyza T. Pader',
         'Arriane Joy H. Alburo',
         'Krisha Lauren L. Genido',
         'Danica Mae C. Viray'
+      ]},
+      {name: 'Commission on Audit (COA)', members: [
+        'Jason T. Pagal',
+        'Raine Kristea Candiz Maxine M. Cerro',
+        'Matt Froy Davis C. Parilla',
+        'Jhomari Kenshin P. Sarte',
+        'Ericka Ann P. Palatino'
       ]},
       {name: 'Committee on Student Affairs and Concern', members: [
         'Rhian Llaneza',

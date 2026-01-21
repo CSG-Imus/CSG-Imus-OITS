@@ -916,19 +916,19 @@
       title: "Student Hours '25",
       folder: "Event Gallery Materials/Sub Event/Student Hours '25",
       photos: [],
-      type: 'Sub Event'
+      type: 'Main Project'
     },
     {
       title: "Pelikulaya '25",
       folder: "Event Gallery Materials/Sub Event/Pelikulaya '25",
       photos: [],
-      type: 'Sub Event'
+      type: 'Main Project'
     },
     {
       title: 'Pande Kape ni Kabsuy - Finals',
       folder: 'Event Gallery Materials/Sub Event/Pande Kape ni Kabsuy - Finals',
       photos: [],
-      type: 'Sub Event'
+      type: 'Main Project'
     }
   ];
 

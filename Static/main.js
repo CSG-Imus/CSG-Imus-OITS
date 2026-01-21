@@ -163,7 +163,7 @@
         'Performing Arts Representative • Georgie May G. Tunay',
         'Athletics Representative • Keith Owen B. Silva'
       ]},
-      {name: 'Social and Environmental Awareness Committee', members: [
+      {name: 'Social and Environmental Awareness Committee (SOCENVI)', members: [
         'Jennifer Nazareno',
         'Ralfh Dharren Molina'
       ]},

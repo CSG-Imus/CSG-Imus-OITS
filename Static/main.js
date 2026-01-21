@@ -34,7 +34,19 @@
     accomplishmentReports: [],
     financialStatements: [],
     officeMemorandums: [
-      {id: 'Office Memorandum 1', title: '3rd General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 1 - 3rd General Meeting.pdf'}
+      {id: 'Office Memorandum 1', title: '1st General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 1 - 1st General Meeting.pdf'},
+      {id: 'Office Memorandum 2', title: '2nd General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 2 - 2nd General Meeting.pdf'},
+      {id: 'Office Memorandum 3', title: 'Election of Commisioners for Commision on Audit', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 3 - Election of Commisioners for Commision on Audit.pdf'},
+      {id: 'Office Memorandum 4', title: '3rd General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 4 - 3rd General Meeting.pdf'},
+      {id: 'Office Memorandum 6', title: 'Pledge of Commitment', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 6 - Pledge of Commitment.pdf'},
+      {id: 'Office Memorandum 8', title: '4th General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 8 - 4th General Meeting.pdf'},
+      {id: 'Office Memorandum 9', title: '1st General Meeting (COC)', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 9 - 1st General Meeting (COC).pdf'},
+      {id: 'Office Memorandum 10', title: '5th General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 10 - 5th General Meeting.pdf'},
+      {id: 'Office Memorandum 11', title: '2nd Special Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 11 - 2nd Special Meeting.pdf'},
+      {id: 'Office Memorandum 13', title: '6th General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 13 - 6th General Meeting.pdf'},
+      {id: 'Office Memorandum 14', title: '3rd Special Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 14 - 3rd Special Meeting.pdf'},
+      {id: 'Office Memorandum 15', title: 'Paskuhan Preparation', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 15 - Paskuhan Preparation.pdf'},
+      {id: 'Office Memorandum 17', title: '7th General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 17 - 7th General Meeting.pdf'}
     ],
     activityProposals: [
       {id: 'Project Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - Student Hours.pdf'},

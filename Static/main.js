@@ -123,7 +123,7 @@
       }
     },
     committees: [
-      {name: 'Committee on Creatives', members: [
+      {name: 'Committee on Creatives (COC)', members: [
         'Zhiro Francisco',
         'Princess Ugerio',
         'Abegail Dizon',
@@ -139,7 +139,7 @@
         'Shaun Russelle Obsenares',
         'Liam Arrel Libid'
       ]},
-      {name: 'Rules and Internal Affairs Committee', members: [
+      {name: 'Rules and Internal Affairs Committee (RIAC)', members: [
         'Rica Babes B. Delos Reyes',
         'Craven Mish Lorraine L. Norbe',
         'Chieko M. Lantajo',
@@ -149,14 +149,14 @@
         'Marvilyn G. Frias',
         'Kimverly S. Mina'
       ]},
-      {name: 'Committee on External Affairs', members: [
+      {name: 'Committee on External Affairs (COEXA)', members: [
         "Dean Levi's G. Aquino",
         'Allexzeus Marvel C. Padilla',
         'Juria Mae N. Dela Cerna',
         'Ryren Hagos',
         'Juvert V. Vista'
       ]},
-      {name: 'Committee on Culture, Arts and Athletics', members: [
+      {name: 'Committee on Culture, Arts and Athletics (CCAA)', members: [
         'Vice Chairperson • Hans Christian O. Ancierto',
         'Secretary • Anjon-Lores E. Cañares',
         'Performing Arts Representative • Jay Ar V. Rondina',
@@ -167,7 +167,7 @@
         'Jennifer Nazareno',
         'Ralfh Dharren Molina'
       ]},
-      {name: 'Committee on Finance', members: [
+      {name: 'Committee on Finance (COF)', members: [
         'Arjeff Tejero',
         'Jasmine Ramos',
         'Vhilroi Allyza T. Pader',
@@ -182,7 +182,7 @@
         'Jhomari Kenshin P. Sarte',
         'Ericka Ann P. Palatino'
       ]},
-      {name: 'Committee on Student Affairs and Concern', members: [
+      {name: 'Committee on Student Affairs and Concern (CSAC)', members: [
         'Rhian Llaneza',
         'Angel Sais',
         'Warren Reyes',
@@ -198,7 +198,7 @@
         'Ariane Nicole D. Comedia',
         'Zachariah Sydney U. Babon'
       ]},
-      {name: 'Committee on Web Development', members: [
+      {name: 'Committee on Web Development (WebDev)', members: [
         'Ralph Kenneth B. Perez',
         'Jerald D. Estrella',
         'Taisei Domingo',

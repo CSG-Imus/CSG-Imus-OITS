@@ -29,15 +29,33 @@
       {id: 'Resolution 16', title: 'Budget Allocation for Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 16 - Budget Allocation for Student Hours.pdf'},
       {id: 'Resolution 17', title: 'Budget Allocation for Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 17 - Budget Allocation for Level-Up Paskuhan.pdf'},
       {id: 'Resolution 18', title: 'Budget Allocation for Pelikulaya', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 18 - Budget Allocation for Pelikulaya.pdf'},
-      {id: 'Resolution 20', title: "Student Hours' MASAsagot Mo Ba, The Game Show", term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: "files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 20 - Student Hours' MASAsagot Mo Ba, The Game Show.pdf"}
+        {id: 'Resolution 20', title: "Student Hours' MASAsagot Mo Ba, The Game Show", term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: "files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 20 - Student Hours' MASAsagot Mo Ba, The Game Show.pdf"},
+        {id: 'Resolution 21', title: 'Adoption of IASSC', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 21 - Adoption of IASSC.pdf.pdf'},
+        {id: 'Resolution 22', title: 'Establishment of Chat.CSG', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 22 - Establishment of Chat.CSG.pdf.pdf'},
+        {id: 'Resolution 23', title: 'Structuring of CoC', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 23 - Structuring of CoC.pdf.pdf'},
+        {id: 'Resolution 24', title: 'SAP Elective Positions', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 24 - SAP Elective Positions.pdf.pdf'},
+        {id: 'Resolution 25', title: 'Appointment of Chairpersons and Committe Members', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 25 - Appointment of Chairpersons and Committe Members.pdf.pdf'},
+        {id: 'Resolution 26', title: 'Temporary Website for OITS', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Resolution/Resolution 26 - Temporary Website for OITS.pdf.pdf'}
     ],
     accomplishmentReports: [],
     financialStatements: [],
+    sponsorshipLetters: [
+      {id: 'Sponsorship Letter - BPI', title: 'BPI Sponsorship', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Sponsorship Letter/BPI - Sponsorship Letter.pdf.pdf'},
+      {id: 'Sponsorship Letter - BPI Extension', title: 'BPI Extension Sponsorship', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Sponsorship Letter/BPI EXTENSION - Sponsorship Letter.pdf.pdf'},
+      {id: 'Sponsorship Letter - Congressman', title: 'Congressman Sponsorship', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Sponsorship Letter/CONGRESSMAN - Sponsorship Letter.pdf.pdf'},
+      {id: 'Sponsorship Letter - Councilor', title: 'Councilor Sponsorship', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Sponsorship Letter/COUNCILOR - Sponsorship Letter.pdf.pdf'},
+      {id: 'Sponsorship Letter - The Garth Events', title: 'The Garth Events Sponsorship', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Sponsorship Letter/THE GARTH EVENTS - Sponsorship Letter.pdf.pdf'},
+      {id: 'Sponsorship Letter - Xerography', title: 'Xerography Sponsorship', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Sponsorship Letter/XEROGRAPHY - Sponsorship Letter.pdf.pdf'}
+    ],
+    excuseLetters: [
+      {id: 'Excuse Letter - Paskuhan', title: 'Paskuhan Excuse Letter', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Excuse Letter/EXCUSE LETTER - PASKUHAN.pdf.pdf'}
+    ],
     officeMemorandums: [
       {id: 'Office Memorandum 1', title: '1st General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 1 - 1st General Meeting.pdf'},
       {id: 'Office Memorandum 2', title: '2nd General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 2 - 2nd General Meeting.pdf'},
       {id: 'Office Memorandum 3', title: 'Election of Commisioners for Commision on Audit', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 3 - Election of Commisioners for Commision on Audit.pdf'},
       {id: 'Office Memorandum 4', title: '3rd General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 4 - 3rd General Meeting.pdf'},
+      {id: 'Office Memorandum 5', title: 'Office Clean Up', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 5 - Office Clean Up.pdf'},
       {id: 'Office Memorandum 6', title: 'Pledge of Commitment', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 6 - Pledge of Commitment.pdf'},
       {id: 'Office Memorandum 8', title: '4th General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 8 - 4th General Meeting.pdf'},
       {id: 'Office Memorandum 9', title: '1st General Meeting (COC)', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 9 - 1st General Meeting (COC).pdf'},
@@ -49,11 +67,11 @@
       {id: 'Office Memorandum 17', title: '7th General Meeting', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Office Memorandum/Office Memorandum 17 - 7th General Meeting.pdf'}
     ],
     activityProposals: [
-      {id: 'Project Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - Student Hours.pdf'},
-      {id: 'Project Proposal - MASAsagot Mo Ba', title: 'MASAsagot Mo Ba', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - MASAsagot Mo Ba.pdf'},
-      {id: 'Project Proposal - Level-Up Paskuhan', title: 'Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - Level-Up Paskuhan.pdf'},
-      {id: 'Project Proposal - CSG Year-End Party', title: 'CSG Year-End Party', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - CSG Year-End Party.pdf'},
-      {id: 'Project Proposal - PELIKULAYA', title: 'PELIKULAYA', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Project Proposal - PELIKULAYA.pdf'},
+      {id: 'Activity Proposal - Student Hours', title: 'Student Hours', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - Student Hours.pdf'},
+      {id: 'Activity Proposal - MASAsagot Mo Ba', title: 'MASAsagot Mo Ba', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - MASAsagot Mo Ba.pdf'},
+      {id: 'Activity Proposal - Level-Up Paskuhan', title: 'Level-Up Paskuhan', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal- Level-Up Paskuhan.pdf'},
+      {id: 'Activity Proposal - CSG Year-End Party', title: 'CSG Year-End Party', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - CSG Year-End Party.pdf'},
+      {id: 'Activity Proposal - PELIKULAYA', title: 'PELIKULAYA', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - PELIKULAYA.pdf'},
       {id: 'Activity Proposal - SLTP', title: 'SLTP', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Activity Proposal/Activity Proposal - SLTP.pdf'}
     ],
     projectProposals: [
@@ -61,7 +79,8 @@
       {id: 'Project Proposal - Pande Kape Ni Kabsuy 1', title: 'Pande Kape Ni Kabsuy 1', priority: 3, term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Pande Kape Ni Kabsuy 1.pdf'},
       {id: 'Project Proposal - CSG Imus OITS - Phase 1', title: 'CSG Imus OITS - Phase 1', priority: 2, term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - CSG Imus OITS - Phase 1.pdf'},
       {id: 'Project Proposal - Panamitang-Bayani', title: 'Panamitang-Bayani', priority: 1, term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - Panamitang-Bayani.pdf'},
-      {id: 'Project Proposal - SLTP Shirt', title: 'SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - SLTP Shirt.pdf'}
+      {id: 'Project Proposal - SLTP Shirt', title: 'SLTP Shirt', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - SLTP Shirt.pdf'},
+      {id: 'Project Proposal - ID Lanyard', title: 'ID Lanyard', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Project Proposal/Project Proposal - ID Lanyard.pdf.pdf'}
     ],
     minutes: [
       {id: 'Minutes - September 17, 2025', title: 'SDS Office (F2F)', date: '2025-09-17', term: CURRENT_TERM, semester: CURRENT_SEMESTER, file: 'files/A.Y. 2025 - 2026/1st Semester/Minutes of the Meeting/September 17, 2025 - SDS Office (F2F).pdf'},
@@ -228,7 +247,9 @@
     'minutes': data.minutes,
     'office-memorandums': data.officeMemorandums,
     'accomplishment-reports': data.accomplishmentReports,
-    'financial-statements': data.financialStatements
+    'financial-statements': data.financialStatements,
+    'sponsorship-letters': data.sponsorshipLetters,
+    'excuse-letters': data.excuseLetters
   };
 
   const documentContainers = {};
@@ -312,8 +333,7 @@
   function formatDisplayId(id, type){
     if(!id) return '';
     // Keep full label for office memorandums so the prefix shows (e.g., "Office Memorandum 17").
-    if(type === 'office-memorandums') return id;
-    if(type === 'resolutions') return id;
+    if(type === 'office-memorandums' || type === 'resolutions' || type === 'sponsorship-letters' || type === 'excuse-letters') return id;
     const prefix = TYPE_PREFIXES[type];
     if(!prefix) return id;
     const lower = id.toLowerCase();
